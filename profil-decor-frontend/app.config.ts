@@ -1,6 +1,22 @@
 export default defineAppConfig({
   ui: {
-    primary: 'vermillion',
-    gray: 'alabaster',
-  }
+    primary: 'roman',
+    gray: 'cararra',
+  },
+  navigationMenu: [
+    [ 
+      { 
+        label: 'ACASA', 
+        to: '/' 
+      }
+    ],
+    [ 
+      { 
+        label: 'DESPRE NOI' 
+      }, 
+      { 
+        label: 'CONTACT'
+      }
+    ]
+  ]
 });

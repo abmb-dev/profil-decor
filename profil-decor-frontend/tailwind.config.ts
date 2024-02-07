@@ -1,11 +1,13 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default <Partial<Config>> {
+  content: [
+    "./components/**/*.{vue}",
+  ],
   theme: {
     extend: {
       colors: {
-        vermillion: {
+        roman: {
           '50': '#fdf4f3',
           '100': '#fde5e3',
           '200': '#fccfcc',
@@ -18,18 +20,18 @@ export default <Partial<Config>> {
           '900': '#7b2721',
           '950': '#42110d',
         },
-        alabaster: {
+        cararra: {
           '50': '#f8f7f4',
-          '100': '#eae7dc',
-          '200': '#ded9ca',
-          '300': '#cac1a7',
-          '400': '#b3a384',
-          '500': '#a48e6b',
-          '600': '#977e5f',
-          '700': '#7e6850',
-          '800': '#675545',
-          '900': '#54473a',
-          '950': '#2c241e',
+          '100': '#ece9e1',
+          '200': '#ddd8cb',
+          '300': '#c8bea9',
+          '400': '#b1a086',
+          '500': '#a18b6e',
+          '600': '#947b62',
+          '700': '#7b6453',
+          '800': '#655347',
+          '900': '#53453b',
+          '950': '#2c231e',
         }
       }
     }
