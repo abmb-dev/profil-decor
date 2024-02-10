@@ -4,7 +4,8 @@ const { buildNavigationMenu } = useNavigation();
 const { windowY, offsetY } = useWindowScroll();
 
 const navigationBarUi = /*ui*/ {
-  wrapper: 'fixed bg-transparent',
+  wrapper: 'fixed bg-transparent z-50',
+  inner: "mr-4 last:mr-0",
   container: "px-5 py-6",
   active: "",
   before: "",
@@ -17,7 +18,7 @@ const navigationBarMaskUi = Object.assign(
   {},
   navigationBarUi,
   {
-    wrapper: "fixed top-0 left-0 bg-primary w-full",
+    wrapper: "fixed bg-primary w-full z-50",
     label: "text-gray-100 text-sm font-medium",
   }
 );

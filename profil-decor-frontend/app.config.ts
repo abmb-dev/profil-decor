@@ -1,12 +1,12 @@
 export default defineAppConfig({
   ui: {
-    primary: 'roman',
-    gray: 'cararra',
+    primary: 'shark',
+    gray: 'bud',
   },
   navigationMenu: [
     [ 
       { 
-        label: 'ACASA', 
+        label: 'PROFIL DECOR', 
         to: '/' 
       }
     ],
