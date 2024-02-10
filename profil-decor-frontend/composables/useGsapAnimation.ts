@@ -10,6 +10,10 @@ export default function () {
     return gsap.timeline().to('#landing-title-decor', { duration: 3, ease: 'power4', stagger: 0.1, opacity: 1, markers: false });
   }
 
+  function initOpacityAnimation(isFadeAway = false) {
+    return gsap.timeline().to('#landing-page', { duration: 0.25, ease: "power4", opacity: isFadeAway ? 0 : 1 });
+  }
+
   function initTitleScrollAnimation() {
     const timeline = gsap.timeline({
       scrollTrigger: {
@@ -34,7 +38,8 @@ export default function () {
   }
 
   return {
-    playLandingTitleAnimations
+    playLandingTitleAnimations,
+    initOpacityAnimation
   };
 
 };

@@ -3,3 +3,11 @@ body {
   font-family: 'Montserrat';
   font-weight: 100;
 }
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.custom-height {
+  height: calc(100dvh - 4rem);
+}
