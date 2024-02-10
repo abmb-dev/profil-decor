@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 
 const { initOpacityAnimation } = useGsapAnimation();
 const navigationStore = useNavigationStore();
@@ -35,18 +36,37 @@ useHead({
   }
 });
 
-function initializeGsap() {
+const initializeGsap = () => {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' });
 }
 
+let lenis: Lenis;
+const initializeLenisScroll = () => {
+  lenis = new Lenis();
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+}
+
 watch(() => isNavigationMenuOpen.value, () => {
   initOpacityAnimation(isNavigationMenuOpen.value).play();
+  if (isNavigationMenuOpen.value) {
+    lenis.stop();
+  } else {
+    lenis.start();
+  }
 });
 
 onMounted(() => {
-  initializeGsap();
   const { playLandingTitleAnimations } = useGsapAnimation();
+
+  initializeGsap();
+  initializeLenisScroll();
   playLandingTitleAnimations();
 });
 </script>
