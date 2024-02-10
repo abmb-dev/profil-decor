@@ -3,20 +3,25 @@ export default defineAppConfig({
     primary: 'shark',
     gray: 'bud',
   },
-  navigationMenu: [
-    [ 
-      { 
-        label: 'PROFIL DECOR', 
-        to: '/' 
-      }
-    ],
-    [ 
-      { 
-        label: 'DESPRE NOI' 
-      }, 
-      { 
-        label: 'CONTACT'
-      }
+  navigationMenu: {
+    home: {
+      label: 'PROFIL DECOR',
+      key: 'home',
+      to: '/'
+    },
+    links: [
+      {
+        label: 'DESPRE NOI',
+        key: 'about us',
+      },
+      {
+        label: 'PORTOFOLIU',
+        key: 'showcase'
+      },
+      {
+        label: 'CONTACT',
+        key: 'contact'
+      },
     ]
-  ]
+  }
 });
