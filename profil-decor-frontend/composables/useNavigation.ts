@@ -10,7 +10,6 @@ export type NavigationMenu = {
 };
 
 export default function () {
-  
   function buildNavigationMenu(): NavigationMenu {
     const appConfig = useAppConfig();
     return appConfig.navigationMenu as NavigationMenu

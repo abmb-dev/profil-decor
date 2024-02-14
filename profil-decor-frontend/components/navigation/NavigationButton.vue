@@ -7,11 +7,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['menuClick']);
 
-const isMenuOpen = ref(false);
-
 const onClick = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-  emit('menuClick', isMenuOpen.value);
+  emit('menuClick');
 }
 
 </script>

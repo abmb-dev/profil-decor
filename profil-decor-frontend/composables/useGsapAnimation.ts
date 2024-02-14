@@ -1,7 +1,6 @@
 import gsap from 'gsap';
 
 export default function () {
-
   function initFirstTitleWordAnimation() {
     return gsap.timeline().to('#landing-title-profil', { duration: 3, ease: 'power4', stagger: 0.1, opacity: 1, markers: false });
   }
@@ -41,5 +40,4 @@ export default function () {
     playLandingTitleAnimations,
     initOpacityAnimation
   };
-
 }
