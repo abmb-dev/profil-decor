@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxt/ui', '@nuxtjs/google-fonts', "@pinia/nuxt"],
+  modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@pinia/nuxt'],
   googleFonts: {
     families: {
       Roboto: [100, 300],
@@ -10,6 +10,6 @@ export default defineNuxtConfig({
     }
   },
   alias: {
-    pinia: "/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs"
+    pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs'
   },
 })

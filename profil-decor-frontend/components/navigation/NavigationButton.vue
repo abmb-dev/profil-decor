@@ -23,9 +23,9 @@ const onClick = () => {
     @click="onClick"
   >
     <div :class="cn('flex flex-col justify-evenly w-full h-full')">
-      <div :class="cn('h-[1px] w-full inline-block', props.variant)"></div>
-      <div :class="cn('h-[1px] w-full inline-block', props.variant)"></div>
-      <div :class="cn('h-[1px] w-full inline-block', props.variant)"></div>
+      <div :class="cn('h-[1px] w-full inline-block', props.variant)" />
+      <div :class="cn('h-[1px] w-full inline-block', props.variant)" />
+      <div :class="cn('h-[1px] w-full inline-block', props.variant)" />
     </div>
   </button>
 </template>

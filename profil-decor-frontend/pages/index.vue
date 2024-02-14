@@ -1,9 +1,18 @@
 <template>
   <div id="landing-page"> 
-    <section id="landing-section" class="custom-height w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden">
+    <section
+      id="landing-section"
+      class="custom-height w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden"
+    >
       <div class="flex flex-col w-full h-full items-center justify-center">
-        <span id="landing-title-profil" class="text-primary leading-[20vw] opacity-0 text-[25vw]">PROFIL</span>
-        <div id="landing-title-decor" class="opacity-0">
+        <span
+          id="landing-title-profil"
+          class="text-primary leading-[20vw] opacity-0 text-[25vw]"
+        >PROFIL</span>
+        <div
+          id="landing-title-decor"
+          class="opacity-0"
+        >
           <span class="text-primary leading-[20vw] text-[25vw]">D</span>
           <span class="text-primary leading-[20vw] text-[25vw]">E</span>
           <span class="text-primary leading-[20vw] text-[25vw]">C</span>
@@ -12,10 +21,10 @@
         </div>
       </div>
     </section>
-    <section class="w-screen h-screen bg-primary"></section>
-    <section class="w-screen h-screen bg-primary"></section>
-    <section class="w-screen h-screen bg-gray-100"></section>
-    <section class="w-screen h-screen bg-gray-100"></section>
+    <section class="w-screen h-screen bg-primary" />
+    <section class="w-screen h-screen bg-primary" />
+    <section class="w-screen h-screen bg-gray-100" />
+    <section class="w-screen h-screen bg-gray-100" />
   </div>
 </template>
 

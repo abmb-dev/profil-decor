@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 
+// TODO [Enhancement] : Add here support for SEO
 useHead({
   title: 'Profil Decor',
   meta: [

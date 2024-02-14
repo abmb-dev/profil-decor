@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const navigationMenu = useNavigation().buildNavigationMenu();
 
-// TODO: Replace with data from server
+// TODO [Integration] : Replace this with data from server
 const addressData = {
   street: 'example of a street, nr 1',
   location: 'Botosani, Romania',
