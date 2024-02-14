@@ -20,7 +20,8 @@ export default defineAppConfig({
       },
       {
         label: 'CONTACT',
-        key: 'contact'
+        key: 'contact',
+        to: '/contact'
       },
     ]
   }
