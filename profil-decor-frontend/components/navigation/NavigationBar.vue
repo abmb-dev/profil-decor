@@ -8,8 +8,8 @@ const { windowY, offsetY } = useWindowScroll();
 const navigationMenu = useNavigation().buildNavigationMenu();
 
 const navigationStore = useNavigationStore();
-const openNavigationMenu = (isMenuOpen: boolean) => {
-  navigationStore.toggleNavigationMenu(isMenuOpen);
+const openNavigationMenu = () => {
+  navigationStore.toggleNavigationMenu();
 }
 
 onUnmounted(() => {
