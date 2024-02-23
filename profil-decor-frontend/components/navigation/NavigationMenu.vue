@@ -12,7 +12,7 @@ const addressData = {
 
 <template>
   <aside class="h-screen flex flex-col bg-gray w-full fixed z-20 py-16">
-    <div class="flex flex-col justify-between custom-height">
+    <div class="flex flex-col justify-between w-full custom-menu-height">
       <nav class="mt-6">
         <ul>
           <li
