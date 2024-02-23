@@ -1,0 +1,8 @@
+.vs/
+
+Generated\ Files/
+
+*.obj
+*.iobj
+*.tmp
+bin/
