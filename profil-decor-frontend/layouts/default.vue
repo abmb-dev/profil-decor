@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+
 const navigationStore = useNavigationStore();
 const { isNavigationMenuOpen } = storeToRefs(navigationStore);
 

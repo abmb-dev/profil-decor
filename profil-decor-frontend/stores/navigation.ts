@@ -6,7 +6,7 @@ export const useNavigationStore = defineStore('navigation', () => {
   }
 
   function toggleNavigationMenu(isOpen = false) {
-    isNavigationMenuOpen.value = isOpen;
+    isNavigationMenuOpen.value = !isNavigationMenuOpen.value;
   }
 
   return {

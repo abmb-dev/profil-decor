@@ -1,17 +1,39 @@
 <script setup lang="ts">
 
-defineProps<{
+const props = defineProps<{
   isNavigationMask?: boolean
 }>();
+
+const config = useAppConfig();
+const route = useRoute();
 
 const { windowY, offsetY } = useWindowScroll();
 const navigationMenu = useNavigation().buildNavigationMenu();
 
 const navigationStore = useNavigationStore();
+
 const openNavigationMenu = (isMenuOpen: boolean) => {
   navigationStore.toggleNavigationMenu(isMenuOpen);
 }
 
+// Computed properties responsible for style handling of the navigation bar
+export type NavBgClass = `bg-${'primary' | 'gray-100' | 'transparent'}`;
+
+const clipPathClassByScroll: ComputedRef<NavClipClass> = computed(() => {
+  return props.isNavigationMask && windowY.value < offsetY ? 'clip-path--default' : 'clip-path--active';
+});
+
+export type NavClipClass = `clip-path--${'default' | 'active'}`;
+
+const defaultBgClass: ComputedRef<NavBgClass> = computed(() => {
+  return isStyleEnforced.value ? 'bg-primary' : 'bg-transparent';
+});
+
+const isStyleEnforced: ComputedRef<boolean> = computed(() => {
+  return route.name === config.routes.contact;
+});
+
+// Lifecycle hooks
 onUnmounted(() => {
   navigationStore.$reset();
 });
@@ -21,8 +43,9 @@ onUnmounted(() => {
   <nav
     :class="cn(
       'fixed flex w-full lg:w-[99%] items-center justify-between z-50 mx-auto rounded-xl', 
-      isNavigationMask ? 'bg-primary custom-navigation-clip' : 'bg-transparent',
-      isNavigationMask && windowY < offsetY ? 'clip-path--default' : 'clip-path--active'
+      defaultBgClass,
+      !isStyleEnforced && isNavigationMask ? 'bg-primary custom-navigation-clip' : 'bg-transparent',
+      !isStyleEnforced ? clipPathClassByScroll : ''
     )"
   >
     <ul class="flex items-center min-w-0 px-5 py-6">

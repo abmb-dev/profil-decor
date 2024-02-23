@@ -3,6 +3,9 @@ export default defineAppConfig({
     primary: 'shark',
     gray: 'bud',
   },
+  routes: {
+    contact: 'contact',
+  },
   navigationMenu: {
     home: {
       label: 'PROFIL DECOR',
