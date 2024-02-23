@@ -3,6 +3,9 @@ export default defineAppConfig({
     primary: 'shark',
     gray: 'bud',
   },
+  meta: {
+    motto: "designul unic al casei tale",
+  },
   navigationMenu: {
     home: {
       label: 'PROFIL DECOR',

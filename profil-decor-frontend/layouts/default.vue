@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="flex justify-center p-4">
+    <header class="flex justify-center">
       <NavigationBar />
       <NavigationBar :is-navigation-mask="true" />
       <NavigationMenu v-if="isNavigationMenuOpen" />

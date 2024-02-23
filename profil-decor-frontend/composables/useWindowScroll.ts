@@ -1,5 +1,5 @@
 export default function () {  
-  const offsetY = 10;
+  const offsetY = 25;
   const internalX = ref(process.client ? window.scrollX : 0);
   const internalY = ref(process.client ? window.scrollY : 0);
 
@@ -7,9 +7,14 @@ export default function () {
     return internalX.value;
   });
 
-  const windowY = computed(() => {
-    return internalY.value;
-  })
+  const windowY = computed({
+    get() {
+      return internalY.value;
+    },
+    set(newValue) {
+      internalY.value = newValue;
+    }
+  });
 
   function updateInternalValues(event: any) {
     internalX.value = event.currentTarget.scrollX;

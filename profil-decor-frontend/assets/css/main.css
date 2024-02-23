@@ -8,10 +8,6 @@ body {
   overflow: hidden;
 }
 
-.custom-height {
-  height: calc(100vh - 4rem);
-}
-
 .custom-menu-height {
   height: calc(100dvh - 4vw)
 }

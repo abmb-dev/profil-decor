@@ -5,6 +5,7 @@ defineProps<{
 }>();
 
 const { windowY, offsetY } = useWindowScroll();
+
 const navigationMenu = useNavigation().buildNavigationMenu();
 
 const navigationStore = useNavigationStore();
@@ -20,7 +21,7 @@ onUnmounted(() => {
 <template>
   <nav
     :class="cn(
-      'fixed flex w-full lg:w-[99%] items-center justify-between z-50 mx-auto rounded-xl', 
+      'fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2', 
       isNavigationMask ? 'bg-primary custom-navigation-clip' : 'bg-transparent',
       isNavigationMask && windowY < offsetY ? 'clip-path--default' : 'clip-path--active'
     )"
