@@ -1,5 +1,7 @@
 export const useNavigationStore = defineStore('navigation', () => {
+  const areAssetsLoaded = ref(false);
   const isNavigationMenuOpen = ref(false);
+  const columnHeaderModel = null;
 
   function $reset() {
     isNavigationMenuOpen.value = false;
@@ -10,6 +12,8 @@ export const useNavigationStore = defineStore('navigation', () => {
   }
 
   return {
+    areAssetsLoaded,
+    columnHeaderModel,
     isNavigationMenuOpen,
     toggleNavigationMenu,
     $reset

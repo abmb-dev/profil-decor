@@ -4,6 +4,7 @@ export default defineAppConfig({
     gray: 'bud',
   },
   meta: {
+    name: 'profil decor',
     motto: "designul unic al casei tale",
   },
   navigationMenu: {

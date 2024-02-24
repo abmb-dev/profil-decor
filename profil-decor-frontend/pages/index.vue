@@ -4,7 +4,6 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
 
 let lenis: Lenis;
-const appConfig = useAppConfig();
 const navigationStore = useNavigationStore();
 const { isNavigationMenuOpen } = storeToRefs(navigationStore);
 const { initOpacityAnimation } = useGsapAnimation();
@@ -43,11 +42,8 @@ watch(() => isNavigationMenuOpen.value, () => {
 });
 
 onMounted(() => {
-  const { playLandingTitleAnimations } = useGsapAnimation();
-
   initializeGsap();
   initializeLenisScroll();
-  playLandingTitleAnimations();
 });
 </script>
 
@@ -55,30 +51,23 @@ onMounted(() => {
   <div id="landing-page"> 
     <section
       id="landing-section"
-      class="custom-height w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden bg-grid-small-black/[0.2]"
+      class="w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden bg-dot-black/[0.2]"
     >
-      <div class="absolute pointer-events-none inset-0 flex items-center justify-center bg-gray-100 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div class="absolute pointer-events-none pt-16 inset-0 flex items-center justify-center z-[-1] bg-gray-100 [mask-image:radial-gradient(ellipse_at_center,transparent_85%,black)]"></div>
       <div class="flex flex-col w-full h-full items-center justify-center">
-        <span class="text-primary leading-[5vw] mb-[] text-[5vw] lg:leading-[2vw] lg:text-[1.25vw]">{{ appConfig.meta.motto }}</span>
-        <span 
-          id="landing-title-profil"
-          class="text-primary leading-[20vw] opacity-0 text-[25vw]"
-        >PROFIL</span>
-        <div
-          id="landing-title-decor"
-          class="opacity-0"
-        >
-          <span class="text-primary leading-[20vw] text-[25vw]">D</span>
-          <span class="text-primary leading-[20vw] text-[25vw]">E</span>
-          <span class="text-primary leading-[20vw] text-[25vw]">C</span>
-          <span class="text-white leading-[20vw] text-[25vw]">O</span>
-          <span class="text-primary leading-[20vw] text-[25vw]">R</span>
+        <span id="landing-title-profil" class="text-primary leading-[20vw] text-[25vw]">PROFIL</span>
+        <div class="flex">
+          <span class="text-primary leading-[25vw] text-[25vw]">DEC</span>
+          <ThreeLandingScene />
+          <span class="text-primary leading-[25vw] text-[25vw]">R</span>
         </div>
       </div>
     </section>
+    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]">
+  </section>
     <section class="w-screen h-screen bg-primary" />
     <section class="w-screen h-screen bg-primary" />
-    <section class="w-screen h-screen bg-gray-100" />
-    <section class="w-screen h-screen bg-gray-100" />
+    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]" />
+    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]" />
   </div>
 </template>
