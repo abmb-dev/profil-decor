@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Roboto: [100],
-      Montserrat: [100, 400, 700],
+      Montserrat: [100, 400, 600, 700],
     }
   },
   alias: {

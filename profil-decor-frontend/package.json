@@ -19,6 +19,7 @@
     "gsap": "^3.12.5",
     "mini-svg-data-uri": "^1.4.4",
     "nuxt": "^3.10.1",
+    "split-type": "^0.3.4",
     "tailwind-merge": "^2.2.1",
     "three": "^0.161.0",
     "vue": "^3.4.15",

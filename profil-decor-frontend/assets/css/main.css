@@ -11,3 +11,13 @@ body {
 .custom-menu-height {
   height: calc(100dvh - 4vw)
 }
+
+#landing-title-profil {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.char {
+  opacity: 0;
+  transform: translateY(400px);
+  transition: transform 0.5s;
+}

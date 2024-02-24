@@ -6,7 +6,11 @@ import Lenis from '@studio-freight/lenis';
 let lenis: Lenis;
 const navigationStore = useNavigationStore();
 const { isNavigationMenuOpen } = storeToRefs(navigationStore);
-const { initOpacityAnimation } = useGsapAnimation();
+const { 
+  initOpacityAnimation, 
+  initTextRevealAnimation, 
+  initLandingTimelineAnimation 
+} = useGsapAnimation();
 
 useHead({
   bodyAttrs: {
@@ -34,6 +38,7 @@ const initializeLenisScroll = () => {
 
 watch(() => isNavigationMenuOpen.value, () => {
   initOpacityAnimation(isNavigationMenuOpen.value).play();
+
   if (isNavigationMenuOpen.value) {
     lenis.stop();
   } else {
@@ -43,6 +48,8 @@ watch(() => isNavigationMenuOpen.value, () => {
 
 onMounted(() => {
   initializeGsap();
+  initLandingTimelineAnimation();
+  initTextRevealAnimation('#landing-title-profil');
   initializeLenisScroll();
 });
 </script>
@@ -55,11 +62,11 @@ onMounted(() => {
     >
       <div class="absolute pointer-events-none pt-16 inset-0 flex items-center justify-center z-[-1] bg-gray-100 [mask-image:radial-gradient(ellipse_at_center,transparent_85%,black)]"></div>
       <div class="flex flex-col w-full h-full items-center justify-center">
-        <span id="landing-title-profil" class="text-primary leading-[20vw] text-[25vw]">PROFIL</span>
+        <span id="landing-title-profil" class="text-primary font-semibold tracking-tight leading-[20vw] text-[25vw]">PROFIL</span>
         <div class="flex">
-          <span class="text-primary leading-[25vw] text-[25vw]">DEC</span>
+          <span id="landing-title-decor-first" class="text-primary font-semibold tracking-tight leading-[25vw] text-[25vw]">DEC</span>
           <ThreeLandingScene />
-          <span class="text-primary leading-[25vw] text-[25vw]">R</span>
+          <span id="landing-title-decor-second" class="text-primary font-semibold tracking-tight leading-[25vw] text-[25vw]">R</span>
         </div>
       </div>
     </section>
