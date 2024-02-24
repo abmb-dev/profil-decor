@@ -5,6 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const navigationStore = useNavigationStore();
 const canvas = ref(null);
+const { windowY, offsetY } = useWindowScroll();
 
 const cameraOptions = {
   fov: 65,
@@ -43,21 +44,26 @@ const threeEnvironment = () => {
     createCamera: function (opts) {
       this.config.camera = new THREE.PerspectiveCamera(opts.fov, this.config.sizes.width / this.config.sizes.height, opts.near, opts.far);
       this.config.camera.position.set(0, 400, 0);
-      this.config.camera.lookAt(this.config.scene.position)
+      this.config.camera.lookAt(this.config.scene.position);
       this.config.controls = new OrbitControls(this.config.camera, this.config.renderer.domElement);
       this.config.controls.enabled = false;
       this.config.scene.add(this.config.camera);
       return this;
     },
-    createScene: function () {
-      const axesHelper = new THREE.AxesHelper(1000);
+    createScene: function (isHelperVisible = false) {
       this.config.scene = new THREE.Scene();
-      this.config.scene.add(axesHelper);
+
+      if (isHelperVisible) {
+        const axesHelper = new THREE.AxesHelper(1000);
+        this.config.scene.add(axesHelper);
+      }
+
       return this;
     },
     createLights: function () {
       const ambientLight = new THREE.AmbientLight();
       const directionlLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionlLight.lookAt(this.config.model);
       this.config.scene.add(ambientLight);
       this.config.scene.add(directionlLight);
       return this;
@@ -90,13 +96,24 @@ const threeEnvironment = () => {
       return this;
     },
     addColumnHeadModel: function () {
-      this.config.scene.add(toRaw(navigationStore.columnHeaderModel.scene))
+      this.config.model = toRaw(navigationStore.columnHeaderModel.scene);
+      this.config.scene.add(this.config.model);
+      console.log(this.config.model.rotation);
       return this;
     },
     tick: function () {
       const elapsedTime = this.config.clock.getElapsedTime();
+
       this.config.controls.update();
       this.config.renderer.render(this.config.scene, this.config.camera);
+      this.config.model.rotation.y += elapsedTime * 0.0001;
+      
+      if (windowY.value < offsetY) {
+        this.config.model.rotation.z = 0;
+      } else {
+        this.config.model.rotation.z = windowY.value * 0.0005;
+      }
+
       window.requestAnimationFrame(() => this.tick());
     }
   }
