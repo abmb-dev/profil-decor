@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const appConfig = useAppConfig();
+const { scrollToSection } = useLenisScroll();
 
 </script>
 
@@ -11,7 +12,7 @@ const appConfig = useAppConfig();
       <span class="font-normal">{{ appConfig.meta.location }}</span>
     </div>
     <div class="ml-auto font-normal">
-      <button>
+      <button @click="scrollToSection('top')">
         ↑ Back to top
       </button>
     </div>
