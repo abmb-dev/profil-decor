@@ -22,6 +22,7 @@ namespace profil_decor_server.Models.Context
         public DbSet<FAQ> FAQs { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<AppConfiguration> AppConfigurations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,8 +47,7 @@ namespace profil_decor_server.Models.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var asda = Configuration.GetConnectionString("ProfilDecorDatabase");
-            optionsBuilder.UseSqlServer("Server=DESKTOP-VJE19MA;Database=ProfilDecorDb;user=root;password=pass2");
+            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("ProfilDecorDatabase"));
         }
     }
 }
