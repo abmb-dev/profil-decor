@@ -6,6 +6,7 @@ export default defineAppConfig({
   meta: {
     name: 'profil decor',
     motto: "designul unic al casei tale",
+    location: 'suceava'
   },
   navigationMenu: {
     home: {

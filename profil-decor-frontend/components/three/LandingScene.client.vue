@@ -3,8 +3,8 @@ import { ref } from 'vue';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const navigationStore = useNavigationStore();
 const canvas = ref(null);
+const navigationStore = useNavigationStore();
 const { windowY, offsetY } = useWindowScroll();
 
 const cameraOptions = {
@@ -32,12 +32,12 @@ const threeEnvironment = () => {
       model: null
     },
     createRenderer: function (opts) {
-      this.config.renderer = new THREE.WebGLRenderer({ ... opts });
+      this.config.renderer = new THREE.WebGLRenderer({ ...opts });
 
       this.config.renderer.setSize(this.config.sizes.width, this.config.sizes.height);
       this.config.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       this.config.container.append(this.config.renderer.domElement);
-      
+
       this.config.clock = new THREE.Clock();
       return this;
     },
@@ -63,7 +63,6 @@ const threeEnvironment = () => {
     createLights: function () {
       const ambientLight = new THREE.AmbientLight();
       const directionlLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionlLight.lookAt(this.config.model);
       this.config.scene.add(ambientLight);
       this.config.scene.add(directionlLight);
       return this;
@@ -77,11 +76,11 @@ const threeEnvironment = () => {
         width: this.config.container.clientWidth,
         height: this.config.container.clientHeight
       };
-      
+
       window.addEventListener('resize', () => {
         this.config.sizes.width = this.config.container.clientWidth;
         this.config.sizes.height = this.config.container.clientHeight;
-      
+
         this.config.camera.aspect = this.config.sizes.width / this.config.sizes.height;
         this.config.camera.updateProjectionMatrix();
 
@@ -98,20 +97,19 @@ const threeEnvironment = () => {
     addColumnHeadModel: function () {
       this.config.model = toRaw(navigationStore.columnHeaderModel.scene);
       this.config.scene.add(this.config.model);
-      console.log(this.config.model.rotation);
       return this;
     },
     tick: function () {
-      const elapsedTime = this.config.clock.getElapsedTime();
+      const deltaTime = this.config.clock.getDelta();
 
       this.config.controls.update();
       this.config.renderer.render(this.config.scene, this.config.camera);
-      this.config.model.rotation.y += elapsedTime * 0.0001;
-      
+      this.config.model.rotation.y += deltaTime * 0.25;
+
       if (windowY.value < offsetY) {
         this.config.model.rotation.z = 0;
-      } else {
-        this.config.model.rotation.z = windowY.value * 0.0005;
+      } else if (windowY.value > offsetY && windowY.value < offsetY + 2500000) {
+        this.config.model.rotation.z = windowY.value * 0.00025;
       }
 
       window.requestAnimationFrame(() => this.tick());
