@@ -1,3 +1,8 @@
+
+/**
+ * Composable for handling the scrolling position on X and Y axes
+ * @returns 
+ */
 export default function () {  
   const offsetY = 25;
   const internalX = ref(process.client ? window.scrollX : 0);

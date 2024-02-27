@@ -4,7 +4,6 @@ import gsap from 'gsap';
 
 type relativeTarget = 'top' | 'bottom' | 'left' | 'right';
 type scrollToTarget = relativeTarget | `#${string}` | `.${string}`;
-
 type scrollToOptions = {
   offset: number,
   duration: number,
@@ -15,7 +14,6 @@ type scrollToOptions = {
 /**
  * Composable for initializing and retrieving the reference to the Lenis instance
  * @param isScrollDisabled Ref for starting or stopping the lenis scroll
- * @returns 
  */
 export default function (isScrollDisabled?: Ref<boolean>) {
   let lenis: any = null;
@@ -58,6 +56,10 @@ export default function (isScrollDisabled?: Ref<boolean>) {
         lenis.start();
       }
     }
+  });
+
+  onUnmounted(() => {
+    lenis.destroy();
   });
 
   getLenisInstance();
