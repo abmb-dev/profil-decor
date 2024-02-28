@@ -26,7 +26,7 @@ onUnmounted(() => {
     <ul class="flex items-center min-w-0 px-5 py-6">
       <li class=" mr-4 last:mr-0">
         <NuxtLink :to="navigationMenu.home.to" :class="cn(
-          'group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
+          'uppercase group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
                                             focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
                                             focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
                                             disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',
@@ -41,7 +41,7 @@ onUnmounted(() => {
       <div class="hidden lg:flex">
         <li v-for="link in navigationMenu.links" :key="link.key" class="mr-4 last:mr-0">
           <NuxtLink :to="link.to" :class="cn(
-            'group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
+            'uppercase group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
                                                       focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
                                                       focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
                                                       disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',

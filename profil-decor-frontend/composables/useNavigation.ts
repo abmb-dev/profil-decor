@@ -1,7 +1,8 @@
 type navigationLink = {
-  label?: string,
-  key: string,
   to: string
+  key: string,
+  label?: string,
+  alias?: string
 };
 
 type navigationMenu = {

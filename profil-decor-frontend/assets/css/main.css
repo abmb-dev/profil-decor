@@ -21,3 +21,42 @@ body {
   transform: translateY(400px);
   transition: transform 0.5s;
 }
+
+:root {
+  --multiplier: 100vw;
+  --viewport-unit: 420;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --viewport-unit: 640
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --viewport-unit: 1504
+  }
+}
+
+.leading-dynamic {
+  line-height: calc(24 / var(--viewport-unit) * var(--multiplier));
+}
+
+.margin-bottom-dynamic {
+  margin-bottom: calc(30 / var(--viewport-unit) * var(--multiplier));
+}
+
+.margin-bottom-double-dynamic {
+  margin-bottom: calc(60 / var(--viewport-unit) * var(--multiplier));
+}
+
+.padding-x-dynamic {
+  padding-left: calc(30 / var(--viewport-unit) * var(--multiplier));
+  padding-right: calc(30 / var(--viewport-unit) * var(--multiplier));
+}
+
+.padding-y-dynamic {
+  padding-top: calc(30 / var(--viewport-unit) * var(--multiplier));
+  padding-bottom: calc(30 / var(--viewport-unit) * var(--multiplier)) 0;
+}

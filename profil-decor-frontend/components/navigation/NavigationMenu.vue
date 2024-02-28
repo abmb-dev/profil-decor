@@ -20,7 +20,7 @@ const addressData = {
             :key="link.key"
             class="flex justify-center text-[12.5vw] border-primary border-t last:border-b"
           >
-            <NuxtLink 
+            <NuxtLink class="uppercase"
               :to="link.to"
             >
               {{ link.label }}
