@@ -1,9 +1,9 @@
 <template>
   <div v-if="areAssetsLoaded">
     <header class="flex justify-center">
-      <NavigationBar />
-      <NavigationBar :is-navigation-mask="true" />
-      <NavigationMenu v-if="isNavigationMenuOpen" />
+      <NavigationTopBar />
+      <NavigationTopBar :is-navigation-mask="true" />
+      <NavigationBlocksMenu v-if="isNavigationMenuOpen" />
     </header>
     <slot />
   </div>

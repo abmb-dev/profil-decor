@@ -40,7 +40,7 @@ body {
 }
 
 .leading-dynamic {
-  line-height: calc(30 / var(--viewport-unit) * var(--multiplier));
+  line-height: calc(25 / var(--viewport-unit) * var(--multiplier));
 }
 
 .font-dynamic {

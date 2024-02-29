@@ -13,9 +13,9 @@ type scrollToOptions = {
 
 /**
  * Composable for initializing and retrieving the reference to the Lenis instance
- * @param isScrollDisabled Ref for starting or stopping the lenis scroll
+ * @param isNavigationMenuOpen Ref for starting or stopping the lenis scroll when toggleing the navigation menu 
  */
-export default function (isScrollDisabled?: Ref<boolean>) {
+export default function (isNavigationMenuOpen?: Ref<boolean>) {
   let lenis: any = null;
   const defaultScrollToOptions = {
     offset: 0,
@@ -48,17 +48,16 @@ export default function (isScrollDisabled?: Ref<boolean>) {
     return time < 0.5 ? 4 * Math.pow(time, 3) : 1 - Math.pow(-2 * time + 2, 3) / 2
   }
 
-  watchEffect(() => {
-    if (lenis) {
-      if (toValue(isScrollDisabled)) {
-        lenis.stop();
-      } else {
-        lenis.start();
-      }
+  const stopScrollWatcher = watchEffect(() => {
+    if (isNavigationMenuOpen?.value) {
+      lenis && lenis.stop();
+    } else {
+      lenis && lenis.start();
     }
   });
 
   onUnmounted(() => {
+    stopScrollWatcher();
     lenis.destroy();
   });
 

@@ -8,6 +8,7 @@ const { windowY, offsetY } = useWindowScroll();
 
 const navigationMenu = useNavigation().buildNavigationMenu();
 const navigationStore = useNavigationStore();
+const { isNavigationMenuOpen } = storeToRefs(navigationStore);
 
 const openNavigationMenu = () => {
   navigationStore.toggleNavigationMenu();
@@ -20,8 +21,8 @@ onUnmounted(() => {
 
 <template>
   <nav :class="cn('fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2',
-    isNavigationMask ? 'bg-primary custom-navigation-clip' : 'bg-transparent',
-    isNavigationMask && windowY < offsetY ? 'clip-path--default' : 'clip-path--active'
+    isNavigationMask && !isNavigationMenuOpen ? 'bg-primary custom-navigation-clip' : 'bg-transparent',
+    (isNavigationMask && windowY < offsetY) ? 'clip-path--default' : 'clip-path--active'
   )">
     <ul class="flex items-center min-w-0 px-5 py-6">
       <li class=" mr-4 last:mr-0">
@@ -37,7 +38,7 @@ onUnmounted(() => {
       </li>
     </ul>
     <ul class="min-w-0 px-5 py-6 lg:flex lg:items-center">
-      <NavigationButton :is-default-variant="!isNavigationMask" @menu-click="openNavigationMenu" />
+      <NavigationBlocksToggleButton :is-default-variant="!isNavigationMask" @menu-click="openNavigationMenu" />
       <div class="hidden lg:flex">
         <li v-for="link in navigationMenu.links" :key="link.key" class="mr-4 last:mr-0">
           <NuxtLink :to="link.to" :class="cn(

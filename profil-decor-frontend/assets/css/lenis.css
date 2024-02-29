@@ -17,3 +17,7 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+.hide-overflow section, .hide-overflow footer, .hide-overflow .pin-spacer {
+  overflow: hidden !important;
+}

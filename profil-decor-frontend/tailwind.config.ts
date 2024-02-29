@@ -7,7 +7,6 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 export default <Partial<Config>> {
-  important: true,
   content: [
     "./components/**/*.vue",
     "./components/navigation/**/*.vue",

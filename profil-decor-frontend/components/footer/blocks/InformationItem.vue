@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
 withDefaults(
-  defineProps<{ title?: string, wrapperConfig?: string[], link?: { label: string, to: string }}>(), 
+  defineProps<{ title?: string, wrapperConfig?: string[], link?: { label: string, to: string, external?: boolean }}>(), 
   { 
     wrapperConfig: () => ['lg:col-span-3'],
+    external: false
   }
 );
 
@@ -20,6 +21,7 @@ defineSlots<{ content(): any, additional(): any }>();
     <NuxtLink 
       v-if="link"
       :to="link.to" 
+      :target="link.external ? '_blank' : ''"
       class="uppercase underline lg:no-underline hover:underline hover:cursor-pointer underline-offset-8 text-sm"
     >
       {{ link.label }}
