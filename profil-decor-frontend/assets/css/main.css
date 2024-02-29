@@ -40,7 +40,11 @@ body {
 }
 
 .leading-dynamic {
-  line-height: calc(24 / var(--viewport-unit) * var(--multiplier));
+  line-height: calc(30 / var(--viewport-unit) * var(--multiplier));
+}
+
+.font-dynamic {
+  font-size: calc(16 / var(--viewport-unit) * var(--multiplier));
 }
 
 .margin-bottom-dynamic {

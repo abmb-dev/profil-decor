@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="landing-page" class="relative z-0 pb-[100vh] lg:pb-[40vh]">
+  <div id="landing-page" class="relative z-0 lg:pb-[400px]">
     <section id="landing-section"
       class="w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden bg-dot-black/[0.2]">
       <div
@@ -56,12 +56,11 @@ onMounted(() => {
         </div>
       </div>
     </section>
-    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]">
-    </section>
+    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
     <section class="w-screen h-screen bg-primary"></section>
     <section class="w-screen h-screen bg-primary"></section>
     <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
-    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
-    <FooterContainer></FooterContainer>
+    <section class="w-screen lg:h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
+    <FooterContainer />
   </div>
 </template>
