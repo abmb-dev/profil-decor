@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
 
 type placementType = 'shortLocation' | 'adressLine1' | 'adressLine2' | 'postalCode';
 type placementMetadata = { type: placementType, info: string };
@@ -101,15 +102,17 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
         <FooterBlocksInformationItem title="social media">
           <template #content>
             <div class="flex justify-center gap-x-4 [&_svg]:hover:cursor-pointer lg:justify-start">
-              <CoreTooltipWrapper
+              <CoreTooltip
                 v-for="{ platform, link} in socialMediaLinks" 
+                side="bottom"
+                :sideOffset="16"
                 :key="platform"
                 :text="isSocialLinkEnabled(platform) ? '' : 'In curand!'"
               >
                 <NuxtLink external :to="link" target="_blank">
-                  <Icon :name="`cib:${platform}`" :class="{ 'text-gray-400': !isSocialLinkEnabled(platform)}" />
+                  <Icon :icon="`cib:${platform}`" :class="{ 'text-gray-400': !isSocialLinkEnabled(platform)}" />
                 </NuxtLink>
-              </CoreTooltipWrapper>
+              </CoreTooltip>
             </div>
           </template>
         </FooterBlocksInformationItem>

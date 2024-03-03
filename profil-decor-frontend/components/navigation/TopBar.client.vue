@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import { cva } from 'class-variance-authority';
 
 defineProps<{
   isNavigationMask?: boolean
 }>();
 
-const { windowY, offsetY } = useWindowScroll();
-
-const navigationMenu = useNavigation().buildNavigationMenu();
+// Component configuration
 const navigationStore = useNavigationStore();
+const navigationMenu = useNavigation().buildNavigationMenu();
+const { windowY, offsetY } = useWindowScroll();
 const { isNavigationMenuOpen } = storeToRefs(navigationStore);
 
+// Component business
 const openNavigationMenu = () => {
   navigationStore.toggleNavigationMenu();
 }
@@ -17,39 +19,31 @@ const openNavigationMenu = () => {
 onUnmounted(() => {
   navigationStore.$reset();
 });
+
+// Component style
+const navigationVariants = cva(
+  'fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-section-anti',
+);
 </script>
 
 <template>
-  <nav :class="cn('fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-section-anti',
+  <nav :class="[
+    navigationVariants(),
     isNavigationMask && !isNavigationMenuOpen ? 'custom-navigation-clip' : 'bg-transparent',
     (isNavigationMask && windowY < offsetY) ? 'clip-path--default' : 'clip-path--active'
-  )">
+  ]">
     <ul class="flex items-center min-w-0 px-5 py-6">
-      <li class=" mr-4 last:mr-0">
-        <NuxtLink :to="navigationMenu.home.to" :class="cn(
-          'uppercase group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
-                                            focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
-                                            focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
-                                            disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',
-          isNavigationMask ? 'text-secondary' : 'text-primary'
-        )">
+      <li class="mr-4 last:mr-0">
+        <CoreLink :to="navigationMenu.home.to" :variant="isNavigationMask ? 'secondary' : 'default'">
           {{ navigationMenu.home.label }}
-        </NuxtLink>
+        </CoreLink>
       </li>
     </ul>
     <ul class="min-w-0 px-5 py-6 lg:flex lg:items-center">
       <NavigationBlocksToggleButton :is-default-variant="!isNavigationMask" @menu-click="openNavigationMenu" />
       <div class="hidden lg:flex">
         <li v-for="link in navigationMenu.links" :key="link.key" class="mr-4 last:mr-0">
-          <NuxtLink :to="link.to" :class="cn(
-            'uppercase group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
-                                                      focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
-                                                      focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
-                                                      disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',
-            isNavigationMask ? 'text-secondary' : 'text-primary'
-          )">
-            {{ link.label }}
-          </NuxtLink>
+          <CoreLink :to="link.to" :variant="isNavigationMask ? 'secondary' : 'default'">{{ link.label }}</CoreLink>
         </li>
       </div>
     </ul>

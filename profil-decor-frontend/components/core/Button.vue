@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { cva } from 'class-variance-authority';
 
-const emit = defineEmits(['click']);
-
-type buttonVariant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
-type buttonSize = 'default' | 'sm' | 'lg' | 'icon';
-
-withDefaults(defineProps<{ variant: buttonVariant, size: buttonSize }>(), {
+withDefaults(defineProps<{ variant?: styleVariant, size?: styleSize }>(), {
   variant: 'default',
   size: 'default',
 });
 
+// Component style
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
@@ -40,6 +35,9 @@ const buttonVariants = cva(
     },
   }
 )
+
+// Component business
+const emit = defineEmits(['click']);
 
 const onClick = () => {
   emit('click');

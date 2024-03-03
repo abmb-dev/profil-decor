@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [ '~/assets/css/main.css', '~/assets/css/lenis.css', '~/assets/css/tailwind.css'],
-  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', 'nuxt-icon'],
+  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt'],
   googleFonts: {
     families: {
       Roboto: [100],
