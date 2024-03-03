@@ -38,14 +38,17 @@ export default defineAppConfig({
       {
         label: 'despre noi',
         key: 'about us',
+        to: '/about'
       },
       {
         label: 'portofoliu',
-        key: 'showcase'
+        key: 'portfolio',
+        to: '/portfolio'
       },
       {
         label: 'contact',
-        key: 'contact'
+        key: 'contact',
+        to: '/contact'
       },
     ]
   }

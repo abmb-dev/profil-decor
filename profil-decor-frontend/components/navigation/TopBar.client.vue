@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { cva } from 'class-variance-authority';
-
 defineProps<{
   isNavigationMask?: boolean
 }>();

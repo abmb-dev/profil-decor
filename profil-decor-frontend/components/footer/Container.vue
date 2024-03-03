@@ -111,9 +111,9 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
                 :key="platform"
                 :text="isSocialLinkEnabled(platform) ? '' : 'In curand!'"
               >
-                <NuxtLink external :to="link" target="_blank">
+                <CoreLink external :to="link" target="_blank">
                   <Icon :icon="`cib:${platform}`" :class="{ 'text-gray-400': !isSocialLinkEnabled(platform)}" />
-                </NuxtLink>
+                </CoreLink>
               </CoreTooltip>
             </div>
           </template>
