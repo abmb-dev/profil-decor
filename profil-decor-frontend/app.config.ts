@@ -1,8 +1,4 @@
 export default defineAppConfig({
-  ui: {
-    primary: 'shark',
-    gray: 'bud',
-  },
   meta: {
     businessInfo: {
       name: 'profil decor',

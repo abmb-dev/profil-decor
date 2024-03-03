@@ -55,7 +55,7 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
 </script>
 
 <template>
-  <footer class="lg:fixed -z-[1] bottom-0 bg-gray-200 flex flex-col items-center w-full padding-x-dynamic padding-y-dynamic gap-y-[2vw]">
+  <footer class="lg:fixed -z-[1] bottom-0 bg-section-accent flex flex-col items-center w-full padding-x-dynamic padding-y-dynamic gap-y-[2vw]">
     <FooterBlocksInformationRow>
       <template #info>
         <div class="flex items-baseline">
@@ -65,9 +65,7 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
       </template>
       <template #action>
         <div class="font-normal order-first py-[2vw] lg:py-0 lg:ml-auto lg:order-last">
-          <button @click="scrollToSection('top')">
-            ↑ Inapoi la start
-          </button>
+          <CoreButton @click="scrollToSection('top')">↑ Inapoi la start</CoreButton>
         </div>
       </template>
     </FooterBlocksInformationRow>    

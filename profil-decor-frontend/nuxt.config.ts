@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css', '~/assets/css/lenis.css'],
-  modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@pinia/nuxt', 'nuxt-icon'],
+  css: [ '~/assets/css/main.css', '~/assets/css/lenis.css', '~/assets/css/tailwind.css'],
+  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', 'nuxt-icon'],
   googleFonts: {
     families: {
       Roboto: [100],
@@ -11,5 +11,11 @@ export default defineNuxtConfig({
   },
   alias: {
     pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs'
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
 })

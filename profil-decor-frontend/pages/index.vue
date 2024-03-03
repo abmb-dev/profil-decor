@@ -40,9 +40,9 @@ onMounted(() => {
 <template>
   <div id="landing-page" class="relative z-0 lg:pb-[400px]">
     <section id="landing-section"
-      class="w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden bg-dot-black/[0.2]">
+      class="w-screen h-screen pt-16 flex items-center justify-center overflow-hidden bg-section bg-dot-black/[0.2]">
       <div
-        class="absolute pointer-events-none pt-16 inset-0 flex items-center justify-center z-[-1] bg-gray-100 [mask-image:radial-gradient(ellipse_at_center,transparent_85%,black)]">
+        class="absolute pointer-events-none pt-16 inset-0 flex items-center justify-center z-[-1] [mask-image:radial-gradient(ellipse_at_center,transparent_85%,black)]">
       </div>
       <div class="flex flex-col w-full h-full items-center justify-center">
         <span id="landing-title-profil"
@@ -56,11 +56,11 @@ onMounted(() => {
         </div>
       </div>
     </section>
-    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
-    <section class="w-screen h-screen bg-primary"></section>
-    <section class="w-screen h-screen bg-primary"></section>
-    <section class="w-screen h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
-    <section class="w-screen lg:h-screen bg-gray-100 bg-dot-black/[0.2]"></section>
+    <section class="w-screen h-screen bg-section bg-dot-black/[0.2]"></section>
+    <section class="w-screen h-screen bg-section-anti"></section>
+    <section class="w-screen h-screen bg-section-anti"></section>
+    <section class="w-screen h-screen bg-section bg-dot-black/[0.2]"></section>
+    <section class="w-screen lg:h-screen bg-section bg-dot-black/[0.2]"></section>
     <FooterContainer />
   </div>
 </template>

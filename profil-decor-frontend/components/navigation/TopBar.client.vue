@@ -20,8 +20,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav :class="cn('fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2',
-    isNavigationMask && !isNavigationMenuOpen ? 'bg-primary custom-navigation-clip' : 'bg-transparent',
+  <nav :class="cn('fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-section-anti',
+    isNavigationMask && !isNavigationMenuOpen ? 'custom-navigation-clip' : 'bg-transparent',
     (isNavigationMask && windowY < offsetY) ? 'clip-path--default' : 'clip-path--active'
   )">
     <ul class="flex items-center min-w-0 px-5 py-6">
@@ -31,7 +31,7 @@ onUnmounted(() => {
                                             focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
                                             focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
                                             disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',
-          isNavigationMask ? 'text-gray-100' : 'text-primary'
+          isNavigationMask ? 'text-secondary' : 'text-primary'
         )">
           {{ navigationMenu.home.label }}
         </NuxtLink>
@@ -46,7 +46,7 @@ onUnmounted(() => {
                                                       focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
                                                       focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
                                                       disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',
-            isNavigationMask ? 'text-gray-100' : 'text-primary'
+            isNavigationMask ? 'text-secondary' : 'text-primary'
           )">
             {{ link.label }}
           </NuxtLink>
