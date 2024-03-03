@@ -47,6 +47,10 @@ body {
   font-size: calc(16 / var(--viewport-unit) * var(--multiplier));
 }
 
+.font-double-dynamic {
+  font-size: calc(32 / var(--viewport-unit) * var(--multiplier));
+} 
+
 .margin-bottom-dynamic {
   margin-bottom: calc(30 / var(--viewport-unit) * var(--multiplier));
 }
@@ -63,4 +67,9 @@ body {
 .padding-y-dynamic {
   padding-top: calc(30 / var(--viewport-unit) * var(--multiplier));
   padding-bottom: calc(30 / var(--viewport-unit) * var(--multiplier)) 0;
+}
+
+#landing-title-profil.font-sketch > .line > .word > .char:nth-of-type(2) {
+  -webkit-text-stroke: 4px;
+  -webkit-text-fill-color: transparent;
 }

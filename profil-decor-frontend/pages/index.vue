@@ -25,8 +25,9 @@ onMounted(() => {
 
 <template>
   <div id="landing-page" class="relative z-0 lg:pb-[400px]">
-    <SectionBlocksLanding />
-    <SectionBlocksFAQ />
+    <SectionLandingRoot />
+    <SectionInventoryRoot />
+    <SectionFaqRoot />
     <FooterContainer />
   </div>
 </template>

@@ -18,7 +18,6 @@ const initializeGsap = () => {
 onMounted(() => {
   initializeGsap();
   initLandingTimelineAnimation();
-  debugger
   initTextRevealAnimation('#landing-title-profil');
 
   useLenisScroll(isNavigationMenuOpen);
@@ -27,17 +26,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <SectionWrapper id="landing-section" :isCustom="true">
+  <SectionBlocksWrapper id="landing-section" :isCustom="true">
     <div class="flex flex-col w-full h-full items-center justify-center">
-        <span id="landing-title-profil"
-          class="text-primary font-semibold tracking-tight leading-[20vw] text-[25vw]">PROFIL</span>
-        <div class="flex">
-          <span id="landing-title-decor-first"
-            class="text-primary font-semibold tracking-tight leading-[25vw] text-[25vw]">DEC</span>
-          <ThreeLandingScene />
-          <span id="landing-title-decor-second"
-            class="text-primary font-semibold tracking-tight leading-[25vw] text-[25vw]">R</span>
-        </div>
+      <span id="landing-title-profil" class="text-primary font-semibold tracking-tight leading-[20vw] text-[25vw] font-sketch">PROFIL</span>
+      <div class="flex">
+        <span id="landing-title-decor-first" class="text-primary font-semibold tracking-tight leading-[25vw] text-[25vw]">DEC</span>
+        <SectionLandingScene />
+        <span id="landing-title-decor-second"
+          class="text-primary font-semibold tracking-tight leading-[25vw] text-[25vw]">R</span>
       </div>
-  </SectionWrapper>
+    </div>
+  </SectionBlocksWrapper>
 </template>
