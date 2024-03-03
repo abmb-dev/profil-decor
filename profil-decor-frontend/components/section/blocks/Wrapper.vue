@@ -27,7 +27,7 @@ const sectionVariants = cva(
         secondary: 'bg-section-anti'
       },
       isBigger: {
-        true: 'h-[120vh]'
+        true: 'h-auto'
       }
     }
   }
