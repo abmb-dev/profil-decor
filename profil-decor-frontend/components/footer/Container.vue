@@ -66,7 +66,9 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
       </template>
       <template #action>
         <div class="font-normal order-first py-[2vw] lg:py-0 lg:ml-auto lg:order-last">
-          <CoreButton @click="scrollToSection('top')">↑ Inapoi la start</CoreButton>
+          <CoreButton @click="scrollToSection('top')">
+            <Icon icon="iconamoon:arrow-up-2-duotone" style="font-size: 2em;" />Inapoi la start
+          </CoreButton>
         </div>
       </template>
     </FooterBlocksInformationRow>    

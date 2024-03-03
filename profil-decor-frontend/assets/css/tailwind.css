@@ -8,7 +8,8 @@
     --secondary-background: 0, 0%, 12%;
     --tertiary-background: 73, 8%, 77%;
 
-    --primary: 0°, 0%, 12%;
+    --primary: 0, 0%, 12%;
+    --primary-foreground: 72, 9%, 89%;
     --secondary: 72, 9%, 89%;
 
     --accent: 60 4.8% 95.9%;
