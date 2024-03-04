@@ -30,7 +30,7 @@ namespace profil_decor_server.Services
                 {
                     _context.Add(newFaq);
                 }
-                if (mode == ActionMode.Update)
+                else if (mode == ActionMode.Update)
                 {
                     _context.Update(newFaq);
                 }
@@ -38,7 +38,7 @@ namespace profil_decor_server.Services
                 {
                     _context.Remove(newFaq);
                 }
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             return error;
         }
