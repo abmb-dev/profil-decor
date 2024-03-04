@@ -23,6 +23,7 @@ namespace profil_decor_server.Models.Context
         public DbSet<Image> Images { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<AppConfiguration> AppConfigurations { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

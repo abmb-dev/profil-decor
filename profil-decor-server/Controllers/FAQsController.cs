@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using profil_decor_server.Authorization;
 using profil_decor_server.Dtos;
 using profil_decor_server.Interfaces;
 using profil_decor_server.Models;
@@ -7,6 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace profil_decor_server.Controllers
 {
+    [Authorize]
     [Route("api/[controller]/[action]")]
     [SwaggerTag("FAQ API")]
     public class FAQsController : ControllerBase
@@ -20,6 +22,7 @@ namespace profil_decor_server.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult RetrieveFAQs()
         {

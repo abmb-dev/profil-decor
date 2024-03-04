@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using profil_decor_server.Models.Context;
 
@@ -11,9 +12,10 @@ using profil_decor_server.Models.Context;
 namespace profil_decor_server.Migrations
 {
     [DbContext(typeof(ProfilDecorContext))]
-    partial class ProfilDecorContextModelSnapshot : ModelSnapshot
+    [Migration("20240304145201_AddUserTable")]
+    partial class AddUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
