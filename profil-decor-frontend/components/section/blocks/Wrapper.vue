@@ -19,7 +19,7 @@ withDefaults(
 
 // Component style
 const sectionVariants = cva(
-  'w-screen h-auto pt-16 flex items-center justify-center overflow-hidden z-10',
+  'w-screen pt-16 flex items-center justify-center overflow-hidden z-10',
   {
     variants: {
       variant: {
@@ -27,7 +27,8 @@ const sectionVariants = cva(
         secondary: 'bg-section-anti'
       },
       isFixedHeight: {
-        true: 'h-screen'
+        true: 'h-screen',
+        false: 'h-auto'
       }
     }
   }

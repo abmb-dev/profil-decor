@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SectionBlocksWrapper id="landing-section" :is-custom="true">
+  <SectionBlocksWrapper id="landing-section" :is-custom="true" :is-fixed-height="true">
     <div class="flex flex-col w-full h-full items-center justify-center">
       <span id="landing-title-profil" class="text-primary font-semibold tracking-tight leading-[20vw] text-[25vw] font-sketch">PROFIL</span>
       <div class="flex">
