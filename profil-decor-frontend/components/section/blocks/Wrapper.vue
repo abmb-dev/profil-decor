@@ -53,7 +53,7 @@ const containerVariants = cva(
 </script>
 
 <template>
-  <section :id="id" :class="sectionVariants({ variant, isFixedHeight })" >
+  <section :id="id" :class="sectionVariants({ variant, isFixedHeight })">
     <SectionBlocksGradientMask v-if="variant === 'default'" />
     <div :class="containerVariants({ isCustom, variant })">
       <slot v-if="isCustom"></slot>

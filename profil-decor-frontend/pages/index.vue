@@ -26,6 +26,9 @@ onMounted(() => {
 <template>
   <div id="landing-page" class="relative z-0 lg:pb-[400px]">
     <SectionLandingRoot />
+    <SectionBlocksWrapper id="dummy1" :is-fixed-height="true" />
+    <SectionShowcaseRoot />
+    <SectionBlocksWrapper variant="secondary" id="dummy2" :is-fixed-height="true" />
     <SectionInventoryRoot />
     <SectionFaqRoot />
     <FooterContainer />

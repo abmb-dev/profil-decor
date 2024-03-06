@@ -29,7 +29,7 @@ const items: inventoryItem[] = [
         >
           <template #header>
             <div class="w-full h-full bg-primary flex items-center justify-center">
-              <img src="/assets/png//solbancpro.png" class="w-1/2 h-auto grayscale hover:grayscale-0">
+              <NuxtImg src="/img/solbancpro.png" class="w-1/2 h-auto grayscale hover:grayscale-0" />
             </div>
           </template>
           <template #icon>
