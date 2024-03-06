@@ -7,7 +7,7 @@ withDefaults(
     id: string, 
     variant?: VariantProps<typeof sectionVariants>['variant'],
     isCustom?: boolean,
-    isBigger?: boolean,
+    isFixedHeight?: boolean,
     className?: string, 
   }>(),
   {
@@ -19,15 +19,15 @@ withDefaults(
 
 // Component style
 const sectionVariants = cva(
-  'w-screen h-screen pt-16 flex items-center justify-center overflow-hidden z-10',
+  'w-screen h-auto pt-16 flex items-center justify-center overflow-hidden z-10',
   {
     variants: {
       variant: {
         default: 'bg-section bg-dot-black/[0.2]',
         secondary: 'bg-section-anti'
       },
-      isBigger: {
-        true: 'h-auto'
+      isFixedHeight: {
+        true: 'h-screen'
       }
     }
   }
@@ -52,7 +52,7 @@ const containerVariants = cva(
 </script>
 
 <template>
-  <section :id="id" :class="sectionVariants({ variant, isBigger })" >
+  <section :id="id" :class="sectionVariants({ variant, isFixedHeight })" >
     <SectionBlocksGradientMask v-if="variant === 'default'" />
     <div :class="containerVariants({ isCustom, variant })">
       <slot v-if="isCustom"></slot>

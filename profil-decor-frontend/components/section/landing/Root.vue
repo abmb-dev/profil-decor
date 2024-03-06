@@ -19,14 +19,13 @@ onMounted(() => {
   initializeGsap();
   initLandingTimelineAnimation();
   initTextRevealAnimation('#landing-title-profil');
-
   useLenisScroll(isNavigationMenuOpen);
 });
 
 </script>
 
 <template>
-  <SectionBlocksWrapper id="landing-section" :isCustom="true">
+  <SectionBlocksWrapper id="landing-section" :is-custom="true">
     <div class="flex flex-col w-full h-full items-center justify-center">
       <span id="landing-title-profil" class="text-primary font-semibold tracking-tight leading-[20vw] text-[25vw] font-sketch">PROFIL</span>
       <div class="flex">
