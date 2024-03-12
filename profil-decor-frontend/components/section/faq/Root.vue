@@ -22,7 +22,7 @@ const faqItems = [
 </script>
 
 <template>
-  <SectionBlocksWrapper id="faq-section" :is-custom="false" :is-fixed-height="true">
+  <SectionBlocksWrapper id="faq-section" :is-full-screen="true">
     <template #title>Intrebari frecvente</template>
     <template #content>
       <div class="flex w-full relative">

@@ -17,29 +17,30 @@ watch(() => props.activePin, () => {
     containerStyleConfig.transform = 'rotateX(0deg) scale(1)';
   }
 });
-
 </script>
 
 <template>
-  <div class="relative h-auto max-w-full">
-    <div class="relative group/pin cursor-pointer">
-      <div class="transition-all duration-700 z-10" :style="{perspective: '1000px', transform: 'rotateX(70deg) translateZ(0deg)' }">
-        <div class="relative transition-all duration-700" :style="containerStyleConfig">
-          <NuxtImg class="h-auto max-w-max" :src />
-        </div>
+  <div class="w-full h-auto flex justify-center">
+      <div class="w-full relative flex justify-center transition-all duration-700 z-10" :style="{perspective: '1000px' }">
         <div 
-          v-if="activePin"
-          class="absolute top-4 left-4 w-full h-full bg-secondary bg-dot-black/[0.2] -z-10" 
-          :style="containerStyleConfig">
+          :class="cn('flex w-full relative transition-all duration-700', activePin ? 'border-transparent' : 'border border-border-secondary')" 
+          :style="containerStyleConfig"
+        >
+          <NuxtImg :class="cn('block max-w-full transition duration-700', activePin ? 'grayscale-0' : 'grayscale' )" :src />
+          <div 
+            :class="cn('absolute bg-secondary w-px')" 
+            :style="{ top: `${activePin?.top}%`, left: `${activePin?.left}%` }">
+            <span 
+            :class="cn('absolute bg-secondary w-4 h-4 rounded-full tr -translate-x-2 -translate-y-2', activePin ? 'h-4' : 'h-0')"
+            ></span>
+          </div>
+          <div 
+            class="bg-dot-black/[0.2]"  
+            :class="cn('absolute top-0 left-0 w-full h-full -z-10 opacity-0 transition-all duration-500', activePin ? 'opacity-100 bg-secondary' : 'opacity-0')" 
+            :style="{ transform: 'rotateX(40deg)'}"
+          >
+          </div>
         </div>
       </div>
-    </div>
-    <div 
-      :class="cn('absolute bg-secondary w-px', activePin ? 'h-80' : 'h-0')" 
-      :style="{ top: `${activePin?.top}%`, left: `${activePin?.left}%` }">
-      <span 
-      :class="cn('absolute bg-secondary w-4 h-4 rounded-full tr -translate-x-2 -translate-y-2', activePin ? 'h-4' : 'h-0')"
-      ></span>
-    </div>
   </div>
 </template>

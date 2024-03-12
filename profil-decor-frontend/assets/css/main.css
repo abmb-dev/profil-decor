@@ -1,5 +1,5 @@
 body {
-  background-color: #e4e5e0;
+  background-color: hsl(46, 41%, 92%); /*hsl(255, 18%, 96%); */
   font-family: 'Montserrat';
   font-weight: 100;
 }

@@ -2,10 +2,10 @@
 import type { pin } from './types';
 
 const pins = [
-  { value: 'pin1', title: 'solbanc', top: 20, left: 57.5 },
-  { value: 'pin2', title: 'ancadrament', top: 8, left: 50 },
-  { value: 'pin3', title: 'soclu', top: 8, left: 40 },
-  { value: 'pin4', title: 'cornisa', top: 18, left: 34 },
+  { value: 'pin1', title: 'solbanc', top: 0, left: 0 },
+  { value: 'pin2', title: 'ancadrament', top: 100, left: 100 },
+  { value: 'pin3', title: 'soclu', top: 25, left: 75 },
+  { value: 'pin4', title: 'cornisa', top: 75, left: 25 },
 ];
 
 const activePin = useState<pin | null>('activePin', () => null);
@@ -24,9 +24,9 @@ const selectPin = (preview: pin) => {
   <SectionBlocksWrapper id="showcase-section" :is-custom="false" :is-fixed-height="false" variant="secondary">
     <template #title>Printre lucrarile noastre</template>
     <template #content>
-      <div class="flex justify-between items-center gap-x-4 p-10">
-        <SectionShowcasePinnedDisplay src="/img/showcase.jpeg" :active-pin="activePin" />
+      <div class="flex flex-col justify-between items-center gap-x-4">
         <SectionShowcaseListDisplay :items="pins" @hover-item="selectPin" />
+        <SectionShowcasePinnedDisplay src="/img/showcase.jpeg" :active-pin="activePin" />
       </div>
     </template>
   </SectionBlocksWrapper>

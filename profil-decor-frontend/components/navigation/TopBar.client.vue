@@ -20,7 +20,7 @@ onUnmounted(() => {
 
 // Component style
 const navigationVariants = cva(
-  'fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-section-anti',
+  'fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-primary',
 );
 </script>
 

@@ -4,23 +4,9 @@
 
 @layer base {
   :root {
-    --main-background: 72, 9%, 89%;
-    --secondary-background: 0, 0%, 12%;
-    --tertiary-background: 73, 8%, 77%;
-
     --primary: 0, 0%, 12%;
     --primary-foreground: 72, 9%, 89%;
-    --secondary: 72, 9%, 89%;
-
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 20 14.3% 4.1%;
-    --radius: 0.5rem;
+    --secondary: 0, 0%, 100%;
+    --tertiary: 46, 41%, 92%
   }
 }

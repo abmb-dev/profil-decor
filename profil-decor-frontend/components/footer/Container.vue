@@ -56,13 +56,10 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
 </script>
 
 <template>
-  <footer class="lg:fixed -z-[1] bottom-0 bg-section-accent flex flex-col items-center w-full padding-x-dynamic padding-y-dynamic gap-y-[2vw]">
+  <footer class="lg:fixed -z-[1] bottom-0 bg-tertiary flex flex-col items-center w-full padding-x-dynamic padding-y-dynamic gap-y-[2vw]">
     <FooterBlocksInformationRow>
       <template #info>
-        <div class="flex items-baseline">
-          <span class="text-2xl font-semibold mr-1">{{ appConfig.meta.businessInfo.name }}</span>
-          <span class="font-normal">{{ appConfig.meta.businessInfo.placementInformation.shortLocation }}</span>
-        </div>
+        <MoleculesBusinessLogo :title="appConfig.meta.businessInfo.name" :description="appConfig.meta.businessInfo.placementInformation.shortLocation" />
       </template>
       <template #action>
         <div class="font-normal order-first py-[2vw] lg:py-0 lg:ml-auto lg:order-last">

@@ -20,7 +20,7 @@ const props = withDefaults(
 
 <template>
   <AccordionRoot
-    class="w-full bg-section border border-primary relative z-20"
+    class="w-full bg-secondary border border-primary relative z-20"
     v-bind="props"
   >
     <template v-for="item in items" :key="item.value">

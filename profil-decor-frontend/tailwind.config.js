@@ -15,55 +15,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        section: {
-          DEFAULT: 'hsl(var(--main-background))',
-          anti: 'hsl(var(--secondary-background))',
-          accent: 'hsl(var(--tertiary-background))',
-        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
-        },
-        input: 'hsl(var(--input)',
-        ring: 'hsl(var(--ring)',
-        radius: 'hsl(var(--radius)',
-
-        // Option 1
-        shark: {
-          '50': '#f6f6f6',
-          '100': '#e7e7e7',
-          '200': '#d1d1d1',
-          '300': '#b0b0b0',
-          '400': '#888888',
-          '500': '#1e1e1e',
-          '600': '#5d5d5d',
-          '700': '#4f4f4f',
-          '800': '#454545',
-          '900': '#3d3d3d',
-          '950': '#1e1e1e',
-        },
-        bud: {
-          '50': '#f5f6f4',
-          '100': '#e4e5e0',
-          '200': '#c6c8bf',
-          '300': '#b2b5a8',
-          '400': '#959887',
-          '500': '#888a76',
-          '600': '#787867',
-          '700': '#666557',
-          '800': '#56554a',
-          '900': '#48463f',
-          '950': '#272621',
         }
       },
       keyframes: {

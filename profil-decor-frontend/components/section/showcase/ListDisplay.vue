@@ -19,7 +19,7 @@ const onItemLeave = () => {
 </script>
 
 <template>
-  <ul class="flex flex-col gap-y-4 uppercase font-double-dynamic">
+  <ul class="w-full flex flex-wrap justify-around uppercase font-double-dynamic">
     <li 
       v-for="item in items" :key="item.value"
       class="font-light opacity-50 hover:cursor-pointer hover:opacity-100"
