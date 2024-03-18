@@ -32,9 +32,9 @@ const addressData = {
         </ul>
       </nav>
       <address class="flex flex-col items-center justify-center leading-dynamic font-normal font-dynamic not-italic"> 
-        <p>{{ appConfig.meta.businessInfo.placementInformation.addressLine1 }}</p>
-        <p class="margin-bottom-dynamic">{{ appConfig.meta.businessInfo.placementInformation.addressLine2 }}</p>
-        <p>{{ appConfig.meta.businessInfo.contactInformation.email }}</p>
+        <p>{{ appConfig.meta.business.placement.addressLine1 }}</p>
+        <p class="margin-bottom-dynamic">{{ appConfig.meta.business.placement.addressLine2 }}</p>
+        <p>{{ appConfig.meta.business.contact.email }}</p>
       </address>
     </div>
   </aside>

@@ -21,6 +21,9 @@ export default {
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
+        },
+        tertiary: {
+          DEFAULT: 'rgb(196,206, 211)'
         }
       },
       keyframes: {
@@ -48,6 +51,10 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
+        marqueeLeft: {
+          from: { transform: 'translate(0)' },
+          to: { transform: 'translate(-100%' }
+        },
       },
       animation: {
         slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
@@ -56,6 +63,7 @@ export default {
         slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
         slideDown: 'slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)',
         slideUp: 'slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)',
+        marqueeLeft: 'marqueeLeft 30s linear infinite'
       },
     }
   },

@@ -1,5 +1,5 @@
 body {
-  background-color: hsl(46, 41%, 92%); /*hsl(255, 18%, 96%); */
+  background-color: rgb(196, 206, 211);
   font-family: 'Montserrat';
   font-weight: 100;
 }
@@ -50,6 +50,10 @@ body {
 .font-double-dynamic {
   font-size: calc(32 / var(--viewport-unit) * var(--multiplier));
 } 
+
+.font-extra-dynamic {
+  font-size: calc(48 / var(--viewport-unit) * var(--multiplier));
+}
 
 .margin-bottom-dynamic {
   margin-bottom: calc(30 / var(--viewport-unit) * var(--multiplier));

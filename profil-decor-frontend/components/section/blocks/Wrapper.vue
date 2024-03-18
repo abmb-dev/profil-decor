@@ -1,7 +1,23 @@
 <script lang="ts" setup>
 
-defineSlots<{ default(): any, title(): any, content(): any }>();
-withDefaults(defineProps<{ id: string, className?: string, isCustom?: boolean, isFullScreen?: boolean }>(), { isCustom: false, isFullScreen: false });
+withDefaults(
+  defineProps<{ 
+    id: string, 
+    className?: string, 
+    isCustom?: boolean, 
+    isFullScreen?: boolean 
+  }>(), 
+  { 
+    isCustom: false, 
+    isFullScreen: false 
+  }
+);
+
+defineSlots<{ 
+  default(): any, 
+  title(): any, 
+  content(): any 
+}>();
 
 const sectionVariants = cva(
   'w-screen h-auto bg-secondary first-of-type:pt-0 pt-16 flex items-center justify-center overflow-hidden z-10',
@@ -20,7 +36,7 @@ const containerVariants = cva(
   {
     variants: {
       isCustom: {
-        true: 'items-center',
+        true: 'flex-col items-center',
         false: 'gap-y-10 px-[5vw] flex-col items-left'
       }
     }
@@ -34,9 +50,11 @@ const containerVariants = cva(
     <div :class="containerVariants({ isCustom })">
       <slot v-if="isCustom"></slot>
       <template v-else>
-        <h1 class="font-double-dynamic font-normal">
-          <slot name="title"></slot>
-        </h1>
+        <div class="flex justify-center mx-auto">
+          <h1 class="font-extra-dynamic font-bold">
+            <slot name="title"></slot>
+          </h1>
+        </div>
         <slot name="content"></slot>
       </template>
     </div>

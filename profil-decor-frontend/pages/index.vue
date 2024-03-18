@@ -24,11 +24,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="landing-page" class="relative z-0 lg:pb-[400px]">
-    <SectionDetailRoot id="detail-section" class="h-screen" />
+  <div id="landing-page" class="relative z-0 lg:pb-[320px]">
+    <SectionDetailRoot class="h-screen" />
+    <SectionDescriptionRoot />
+    <SectionDescriptionRoot2 />
     <SectionShowcaseRoot />
-    <SectionBlocksWrapper variant="secondary" id="dummy2" :is-full-screen="true" />
-    <SectionInventoryRoot />
+    <!-- <SectionInventoryRoot /> -->
     <SectionFaqRoot />
     <FooterContainer />
   </div>

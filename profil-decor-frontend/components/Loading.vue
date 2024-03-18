@@ -48,8 +48,8 @@ onMounted(() => {
 <template>
   <section class="w-screen h-screen overflow-hidden flex flex-col justify-center items-center">
     <div class="flex flex-col items-center justify-center"> 
-      <span class="text-2xl font-bold">{{ appConfig.meta.businessInfo.name  }}</span>
-      <span class="text-sm font-normal">{{ appConfig.meta.businessInfo.motto }}</span>
+      <span class="text-2xl font-bold">{{ appConfig.meta.business.name  }}</span>
+      <span class="text-sm font-normal">{{ appConfig.meta.business.motto }}</span>
     </div>
     <span>{{ loadPercent }} %</span>
   </section>

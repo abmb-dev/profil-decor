@@ -6,19 +6,6 @@ export default function () {
     return gsap.timeline().to('#landing-page', { duration: 0.25, ease: "power4", opacity: isFadeAway ? 0 : 1 });
   }
 
-  function initLandingTimelineAnimation() {
-    gsap.timeline({
-      scrollTrigger: {
-        scrub: true,
-        trigger: '#landing-section',
-        start: 'center center',
-        end: 'bottom+=50% center',
-        pin: true,
-        markers: false
-      }
-    });
-  }
-
   function initTextRevealAnimation(target: string) {
     SplitType.create(target);
     gsap.to('.char', {
@@ -31,7 +18,6 @@ export default function () {
   } 
 
   return {
-    initLandingTimelineAnimation,
     initOpacityAnimation,
     initTextRevealAnimation
   };

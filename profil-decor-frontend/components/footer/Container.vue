@@ -6,7 +6,7 @@ type placementMetadata = { type: placementType, info: string };
 type socialMediaPlatform = 'facebook' | 'whatsapp' | 'instagram' | 'tiktok';
 type socialMediaMetadata = { platform: socialMediaPlatform, link: string };
 type contactType = 'telephone1' | 'telephone2' | 'email';
-type contactInformation = { type: contactType, info: string }
+type contact = { type: contactType, info: string }
 
 // Component configuration
 const appConfig = useAppConfig();
@@ -14,25 +14,25 @@ const navigationMenu = useNavigation().buildNavigationMenu();
 const { scrollToSection } = useLenisScroll();
 
 // Contact information business
-const contactInformation: ComputedRef<contactInformation[]> = computed(() => {
+const contact: ComputedRef<contact[]> = computed(() => {
   return Object
-    .entries(appConfig.meta.businessInfo.contactInformation)
+    .entries(appConfig.meta.business.contact)
     .map(entry => ({
       type: entry[0] as contactType,
       info: entry[1],
-    } as contactInformation));
+    } as contact));
 });
 
 const openMailLocalClient = (type: contactType) => {
   if (process.client && type === 'email') {
-    window.location.href = `mailto:${appConfig.meta.businessInfo.contactInformation.email}`;
+    window.location.href = `mailto:${appConfig.meta.business.contact.email}`;
   }
 };
 
 // Placement information business
-const placementInformation: ComputedRef<placementMetadata[]> = computed(() => {
+const placement: ComputedRef<placementMetadata[]> = computed(() => {
   return Object
-    .entries(appConfig.meta.businessInfo.placementInformation)
+    .entries(appConfig.meta.business.placement)
     .map(entry => ({
       type: entry[0] as placementType,
       info: entry[1],
@@ -42,7 +42,7 @@ const placementInformation: ComputedRef<placementMetadata[]> = computed(() => {
 // Social media business
 const socialMediaLinks: ComputedRef<socialMediaMetadata[]> = computed(() => {
   return Object
-    .entries(appConfig.meta.businessInfo.socialMediaLinks)
+    .entries(appConfig.meta.business.socialMediaLinks)
     .map(entry => ({
       platform: entry[0] as socialMediaPlatform,
       link: entry[1],
@@ -50,7 +50,7 @@ const socialMediaLinks: ComputedRef<socialMediaMetadata[]> = computed(() => {
 });
 
 const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
-  return Object.create(appConfig.meta.businessInfo.socialMediaLinks)[platform];
+  return Object.create(appConfig.meta.business.socialMediaLinks)[platform];
 };
 
 </script>
@@ -59,7 +59,7 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
   <footer class="lg:fixed -z-[1] bottom-0 bg-tertiary flex flex-col items-center w-full padding-x-dynamic padding-y-dynamic gap-y-[2vw]">
     <FooterBlocksInformationRow>
       <template #info>
-        <MoleculesBusinessLogo :title="appConfig.meta.businessInfo.name" :description="appConfig.meta.businessInfo.placementInformation.shortLocation" />
+        <MoleculesBusinessLogo :title="appConfig.meta.business.name" :description="appConfig.meta.business.placement.shortLocation" />
       </template>
       <template #action>
         <div class="font-normal order-first py-[2vw] lg:py-0 lg:ml-auto lg:order-last">
@@ -71,10 +71,10 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
     </FooterBlocksInformationRow>    
     <FooterBlocksInformationGrid>
       <template #grid>
-        <FooterBlocksInformationItem title="profil decor pe harta" :link="{ label: 'vezi pe harta', to: appConfig.meta.businessInfo.googleMapsLink, external: true}">
+        <FooterBlocksInformationItem title="profil decor pe harta" :link="{ label: 'vezi pe harta', to: appConfig.meta.business.googleMapsLink, external: true}">
           <template #content>
               <address class="leading-dynamic text-sm margin-bottom-dynamic not-italic">
-                <template v-for="{ type, info } in placementInformation" :key="type">
+                <template v-for="{ type, info } in placement" :key="type">
                   {{ info }} <br />
                 </template>
               </address>
@@ -83,10 +83,10 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
         <FooterBlocksInformationItem title="ore lucratoare">
           <template #content>
             <div class="leading-dynamic text-sm margin-bottom-dynamic">
-              {{ appConfig.meta.businessInfo.openingHoursInformation.longInterval }}
+              {{ appConfig.meta.business.openingHours.longInterval }}
             </div>
             <div class="leading-dynamic text-sm">
-              <div v-for="{ type, info } in contactInformation" :key="type">
+              <div v-for="{ type, info } in contact" :key="type">
                 <span class="mr-2">{{ type.at(0)?.toUpperCase() }}:</span>
                 <span 
                   :class="{ 'hover:underline hover:underline-offset-8 hover:cursor-pointer': type === 'email' }"
