@@ -6,7 +6,7 @@ export default function () {
     return gsap.timeline().to('#landing-page', { duration: 0.25, ease: "power4", opacity: isFadeAway ? 0 : 1 });
   }
 
-  function initTextRevealAnimation(target: string) {
+  function initCharRevealAnimation(target: string) {
     SplitType.create(target);
     gsap.to('.char', {
       y: 0,
@@ -17,8 +17,20 @@ export default function () {
     });
   } 
 
+  function initLineRevealAnimation(target: string) {
+    const childSplit = SplitType.create(target, { split: 'lines', lineClass: 'split-child' });
+
+    gsap.from(childSplit.lines, {
+      duration: 1.5,
+      yPercent: 300,
+      ease: 'power4',
+      stagger: 0.1
+    });
+  }
+
   return {
     initOpacityAnimation,
-    initTextRevealAnimation
+    initCharRevealAnimation,
+    initLineRevealAnimation,
   };
 }

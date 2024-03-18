@@ -27,9 +27,6 @@ onMounted(() => {
   <div id="landing-page" class="relative z-0 lg:pb-[320px]">
     <SectionDetailRoot class="h-screen" />
     <SectionDescriptionRoot />
-    <SectionDescriptionRoot2 />
-    <SectionShowcaseRoot />
-    <!-- <SectionInventoryRoot /> -->
     <SectionFaqRoot />
     <FooterContainer />
   </div>

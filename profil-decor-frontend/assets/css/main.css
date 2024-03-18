@@ -40,7 +40,11 @@ body {
 }
 
 .leading-dynamic {
-  line-height: calc(25 / var(--viewport-unit) * var(--multiplier));
+  line-height: calc(24 / var(--viewport-unit) * var(--multiplier));
+}
+
+.leading-double-dynamic {
+  line-height: calc(48 / var(--viewport-unit) * var(--multiplier));
 }
 
 .font-dynamic {
@@ -73,7 +77,10 @@ body {
   padding-bottom: calc(30 / var(--viewport-unit) * var(--multiplier)) 0;
 }
 
-#landing-title-profil.font-sketch > .line > .word > .char:nth-of-type(2) {
-  -webkit-text-stroke: 4px;
-  -webkit-text-fill-color: transparent;
+.split-parent {
+  overflow: hidden;
+}
+
+.split-child {
+  display: inline-block;
 }
