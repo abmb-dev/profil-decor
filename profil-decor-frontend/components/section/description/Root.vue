@@ -44,15 +44,6 @@ watch(isWork2ImageVisible, () => {
   }
 }); 
 
-watch(windowY, () => {
-  if (windowY.value === 0) {
-    wasWork1DescriptionAnimated.value = false;
-    wasWork2DescriptionAnimated.value = false;
-    wasDescriptionSummaryAnimated.value = false;
-    wasPortfolioDescriptionAnimated.value = false;
-  }
-});
-
 // Portfolio description animation business logic
 const portfolioDescription = ref(null);
 const isPortfolioDescriptionVisible = useElementVisibility(portfolioDescription);
@@ -65,6 +56,33 @@ watch(isPortfolioDescriptionVisible, () => {
     wasPortfolioDescriptionAnimated.value = true;
   }
 });
+
+const workScaleFactor = ref(1.5);
+const portfolioScaleFactor = ref(1.5);
+
+watch(windowY, () => {
+  if (windowY.value === 0) {
+    wasWork1DescriptionAnimated.value = false;
+    wasWork2DescriptionAnimated.value = false;
+    wasDescriptionSummaryAnimated.value = false;
+    wasPortfolioDescriptionAnimated.value = false;
+    workScaleFactor.value = 1.5;
+  } else {
+    workScaleFactor.value = Math.max(1, 1.5 - windowY.value * 0.0001);
+    if (isPortfolioDescriptionVisible.value) {
+      portfolioScaleFactor.value = Math.max(1, 1.5 - windowY.value * 0.0002);
+    }
+  }
+});
+
+onMounted(() => {
+  if (windowY.value > 0) {
+    wasWork1DescriptionAnimated.value = true;
+    wasWork2DescriptionAnimated.value = true;
+    wasDescriptionSummaryAnimated.value = true;
+    wasPortfolioDescriptionAnimated.value = true;
+  }
+})
 </script>
 
 <template>
@@ -80,13 +98,13 @@ watch(isPortfolioDescriptionVisible, () => {
 
       <div class="order-4 lg:order-3 relative col-start-1 col-end-2 lg:col-start-2 lg:col-span-5 overflow-hidden h-fit">
         <div class="relative overflow-hidden w-full h-auto">
-          <NuxtImg src="/img/work/work1.jpg" fit="cover" format="webp" />
+          <NuxtImg src="/img/work/work1.jpg" fit="cover" format="webp" :style="{ transform: `scale(${workScaleFactor})`}" />
         </div>
       </div>
 
       <div class="order-5 lg:order-3 relative col-start-1 col-end-2 lg:col-start-8 lg:self-start lg:col-span-4">
         <div class="relative overflow-hidden w-full h-full">
-          <NuxtImg src="/img/work/work2.jpg" fit="cover" format="webp" />
+          <NuxtImg src="/img/work/work2.jpg" fit="cover" format="webp" :style="{ transform: `scale(${workScaleFactor})`}" />
         </div>
       </div>
 
@@ -104,8 +122,9 @@ watch(isPortfolioDescriptionVisible, () => {
       </div>
 
       <div class="order-7 relative col-start-2 col-end-11 h-2/3">
-        <NuxtImg src="/img/work/work3.jpg" class="object-cover h-full w-full" format="webp" />
-        <!-- <CoreButton class="w-auto self-center lg:self-start">spre portofoliu</CoreButton> -->
+        <div class="relateive overflow-hidden w-full h-full">
+          <NuxtImg src="/img/work/work3.jpg" fit="cover" format="webp" :style="{ transform: `scale(${portfolioScaleFactor})`}" />
+        </div>
       </div>
 
       <div class="order-6 relative col-start-2 col-end-7 flex flex-col gap-y-2" ref="portfolioDescription">
