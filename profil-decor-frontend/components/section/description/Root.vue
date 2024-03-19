@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useElementVisibility } from '@vueuse/core'
+import { useElementVisibility } from '@vueuse/core';
 
 const description = useAppConfig().meta.business.description;
 const { initLineRevealAnimation } = useGsapAnimation();

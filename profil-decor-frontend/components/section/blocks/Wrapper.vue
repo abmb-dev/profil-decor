@@ -51,9 +51,7 @@ const containerVariants = cva(
       <slot v-if="isCustom"></slot>
       <template v-else>
         <div class="flex justify-center mx-auto">
-          <h1 class="font-extra-dynamic font-bold">
-            <slot name="title"></slot>
-          </h1>
+          <slot name="title"></slot>
         </div>
         <slot name="content"></slot>
       </template>

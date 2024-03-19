@@ -23,7 +23,9 @@ const faqItems = [
 
 <template>
   <SectionBlocksWrapper id="faq-section" :is-full-screen="true">
-    <template #title>Intrebari frecvente</template>
+    <template #title>
+      <h1 class="font-extra-dynamic uppercase">Intrebari frecvente</h1>
+    </template>
     <template #content>
       <div class="flex w-full relative">
         <CoreAccordion :items="faqItems" />

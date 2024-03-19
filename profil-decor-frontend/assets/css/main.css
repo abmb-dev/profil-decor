@@ -56,7 +56,7 @@ body {
 } 
 
 .font-extra-dynamic {
-  font-size: calc(48 / var(--viewport-unit) * var(--multiplier));
+  font-size: calc(64 / var(--viewport-unit) * var(--multiplier));
 }
 
 .margin-bottom-dynamic {

@@ -28,6 +28,7 @@ onMounted(() => {
     <SectionDetailRoot class="h-screen" />
     <SectionDescriptionRoot />
     <SectionShowcaseRoot />
+    <SectionCustomRoot />
     <SectionFaqRoot />
     <FooterContainer />
   </div>
