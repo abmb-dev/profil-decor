@@ -32,7 +32,7 @@ const showcaseData: showcaseItem[] = [
 ];
 
 const splide = ref();
-
+const progressPercent = ref();
 const options = ref({
   width: '100%',
   perPage: 1,
@@ -41,18 +41,16 @@ const options = ref({
   pagination: false
 });
 
-const progressPercent = ref();
+const updateSplideProgress = () => {
+  if (splide.value && splide.value.splide ) {
+    const end = splide.value.splide.Components.Controller.getEnd() + 1;
+    progressPercent.value = Math.min((splide.value.splide.index + 1) / end, 1) * 100;
+  }
+};
 
 onMounted(() => {
   if (window.matchMedia('(min-width: 1024px)').matches) {
     options.value.perPage = 3;
-  }
-  
-  if (splide.value && splide.value.splide ) {
-    splide.value.splide.on('mounted move', () => {
-      const end = splide.value.splide.Components.Controller.getEnd() + 1;
-      progressPercent.value = Math.min((splide.value.splide.index + 1) / end, 1) * 100;
-    });
   }
 });
 
@@ -62,7 +60,7 @@ onMounted(() => {
   <div class="my-carousel-progress">
     <div class="bg-primary h-[2px] transition-all w-0" :style="{ width: `${progressPercent}%`}"></div>
   </div>
-  <Splide :options ref="splide">
+  <Splide :options ref="splide" @splide:mounted="updateSplideProgress" @splide:move="updateSplideProgress">
     <SplideSlide v-for="item in showcaseData" :key="item.src">
       <div class="flex flex-col gap-y-4 h-full">
         <NuxtImg :src="item.src" class="w-full max-h-[500px] object-cover" format="webp" />
