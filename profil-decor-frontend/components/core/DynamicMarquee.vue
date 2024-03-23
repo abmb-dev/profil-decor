@@ -14,7 +14,7 @@ defineSlots<{ default(): any }>();
 <template>
   <OMarquee 
     :pauseOnHover
-    class="relative h-[10vw] bg-primary w-[150%] border border-solid flex justify-center items-center cursor-pointer"
+    class="!h-[20vw] lg:!h-[10vw] !w-[150%] bg-primary border border-solid flex justify-center items-center cursor-pointer"
   >
     <slot></slot>
   </OMarquee>
