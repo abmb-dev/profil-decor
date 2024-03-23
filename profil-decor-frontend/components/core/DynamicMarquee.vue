@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-  pauseOnHover: boolean
+    pauseOnHover: boolean
   }>(),
   {
     pauseOnHover: true
@@ -14,7 +14,8 @@ defineSlots<{ default(): any }>();
 <template>
   <OMarquee 
     :pauseOnHover
-    class="!h-[20vw] lg:!h-[10vw] !w-[150%] bg-primary border border-solid flex justify-center items-center cursor-pointer"
+    :clone="true"
+    class="bg-primary !w-full flex justify-center items-center cursor-pointer [&>*]:mr-8"
   >
     <slot></slot>
   </OMarquee>

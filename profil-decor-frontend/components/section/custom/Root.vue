@@ -7,6 +7,12 @@ const email = useAppConfig().meta.business.contact.email;
 const { initLineRevealAnimation } = useGsapAnimation();
 const { windowY } = useWindowScroll();
 
+const openMailLocalClient = () => {
+  if (process.client) {
+    window.location.href = `mailto:${email}`;
+  }
+};
+
 // Custom model description animation business logic
 const customModelDescription = ref(null);
 const isModelDescriptionVisible = useElementVisibility(customModelDescription);
@@ -46,8 +52,8 @@ onMounted(() => {
         <SectionCustomWork3D />
       </div>
     </div>
-    <CoreDynamicMarquee>
-      <p class="uppercase text-secondary font-extrabold text-[8vw]">{{ email }}</p>
+    <CoreDynamicMarquee :content="email">
+        <p class="uppercase text-secondary font-extrabold text-[8vw]">{{ email }}</p>
     </CoreDynamicMarquee>
   </SectionBlocksWrapper>
-</template>
+</template> 
