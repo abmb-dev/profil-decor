@@ -1,15 +1,23 @@
 <script setup lang="ts">
-const title = useAppConfig().meta.business.name;
-const description = useAppConfig().meta.business.placement.shortLocation;
-const sources = [
-  '/img/detail/detail1.jpg',
-  '/img/detail/detail2.jpg',
-  '/img/detail/detail3.jpg',
-];
+
+interface CloudinaryImage {
+  src: string
+}
+
+const { data, error } = await useFetch('/api/cloudinary/details');
+
+const sources: Ref<string[]> = ref([]);
+
+if (data.value) {
+  sources.value = data.value.map((image: CloudinaryImage) => image.src)
+} else if (error.value) {
+  // TODO
+}
+
 </script>
 
 <template>
-  <SectionBlocksWrapper id="showcase-section" :is-custom="true" :is-fixed-height="false" variant="default">
-    <SectionDetailImageSlider :title :description :sources />
-  </SectionBlocksWrapper>
+  <SectionWrapper id="showcase-section" :is-custom="true" :is-fixed-height="false" variant="default">
+    <SectionDetailImageSlider :sources />
+  </SectionWrapper>
 </template>

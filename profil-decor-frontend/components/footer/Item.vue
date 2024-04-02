@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+// Component configuration
 withDefaults(
   defineProps<{ title?: string, wrapperConfig?: string[], link?: { label: string, to: string, external?: boolean }}>(), 
   { 
@@ -18,13 +18,13 @@ defineSlots<{ content(): any, additional(): any }>();
       {{ title }}
     </div>
     <slot name="content"></slot>
-    <NuxtLink 
+    <CoreLink 
       v-if="link"
       :to="link.to" 
       :target="link.external ? '_blank' : ''"
       class="uppercase underline lg:no-underline hover:underline hover:cursor-pointer underline-offset-8 text-sm"
     >
       {{ link.label }}
-    </NuxtLink>
+    </CoreLink>
   </div>
 </template>

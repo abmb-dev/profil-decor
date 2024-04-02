@@ -1,11 +1,11 @@
 <template>
   <div v-if="areAssetsLoaded">
     <header class="flex justify-center">
-      <NavigationTopBar />
-      <NavigationTopBar :is-navigation-mask="true" />
-      <NavigationBlocksMenu v-if="isNavigationMenuOpen" />
+      <NavigationRoot />
+      <NavigationRoot :is-navigation-mask="true" />
+      <NavigationMenu v-if="isNavigationMenuOpen" />
     </header>
-    <slot />
+    <slot></slot>
   </div>
   <Loading v-else @loaded="proceedToNavigation" />
 </template>
@@ -14,8 +14,17 @@
 const navigationStore = useNavigationStore();
 const { areAssetsLoaded, isNavigationMenuOpen } = storeToRefs(navigationStore);
 
-function proceedToNavigation(model: any) {
+const proceedToNavigation = (model: any) => {
   areAssetsLoaded.value = true;
   navigationStore.columnHeaderModel = model;
 }
+
+watch(isNavigationMenuOpen, () => {
+  const lenis = useLenisScroll().getLenisInstance();
+  if (isNavigationMenuOpen.value) {
+    lenis.stop();
+  } else {
+    lenis.start();
+  }
+})
 </script>

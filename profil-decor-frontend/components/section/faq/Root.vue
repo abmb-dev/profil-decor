@@ -22,15 +22,12 @@ const faqItems = [
 </script>
 
 <template>
-  <SectionBlocksWrapper id="faq-section" :is-full-screen="true">
+  <SectionWrapper id="faq-section" :is-full-screen="true">
     <template #title>
       <h1 class="font-extra-dynamic uppercase">Intrebari frecvente</h1>
     </template>
     <template #content>
-      <div class="flex w-full relative">
-        <CoreAccordion :items="faqItems" />
-        <div class="absolute top-4 left-4 w-full h-full bg-primary z-0"></div>
-      </div>
+      <CoreAccordion :items="faqItems" />
     </template>
-  </SectionBlocksWrapper>
+  </SectionWrapper>
 </template>

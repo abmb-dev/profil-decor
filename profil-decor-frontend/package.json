@@ -12,6 +12,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.19.0",
+    "@cloudinary/vue": "^1.12.1",
     "@splidejs/vue-splide": "^0.6.12",
     "@studio-freight/lenis": "^1.0.34",
     "@vueuse/core": "^10.9.0",

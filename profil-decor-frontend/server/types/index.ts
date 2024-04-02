@@ -1,0 +1,3 @@
+interface CloudinaryImage {
+  src: string
+}

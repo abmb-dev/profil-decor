@@ -57,21 +57,21 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
 
 <template>
   <footer class="lg:fixed -z-[1] bottom-0 bg-tertiary flex flex-col items-center w-full padding-x-dynamic padding-y-dynamic gap-y-[2vw]">
-    <FooterBlocksInformationRow>
+    <FooterRow>
       <template #info>
         <MoleculesBusinessLogo :title="appConfig.meta.business.name" :description="appConfig.meta.business.placement.shortLocation" />
       </template>
       <template #action>
         <div class="font-normal order-first py-[2vw] lg:py-0 lg:ml-auto lg:order-last">
-          <CoreButton @click="scrollToSection('top')">
-            <Icon icon="iconamoon:arrow-up-2-duotone" style="font-size: 2em;" />Inapoi la start
+          <CoreButton class="group/btn" @click="scrollToSection('top')">
+            <Icon class="transition-transform rotate-90 group-hover/btn:-rotate-0" icon="iconamoon:arrow-up-2-duotone" style="font-size: 2em;" />Inapoi la start
           </CoreButton>
         </div>
       </template>
-    </FooterBlocksInformationRow>    
-    <FooterBlocksInformationGrid>
+    </FooterRow>    
+    <FooterGrid>
       <template #grid>
-        <FooterBlocksInformationItem title="profil decor pe harta" :link="{ label: 'vezi pe harta', to: appConfig.meta.business.googleMapsLink, external: true}">
+        <FooterItem title="profil decor pe harta" :link="{ label: 'vezi pe harta', to: appConfig.meta.business.googleMapsLink, external: true}">
           <template #content>
               <address class="leading-dynamic text-sm margin-bottom-dynamic not-italic">
                 <template v-for="{ type, info } in placement" :key="type">
@@ -79,8 +79,8 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
                 </template>
               </address>
           </template>
-        </FooterBlocksInformationItem>
-        <FooterBlocksInformationItem title="ore lucratoare">
+        </FooterItem>
+        <FooterItem title="ore lucratoare">
           <template #content>
             <div class="leading-dynamic text-sm margin-bottom-dynamic">
               {{ appConfig.meta.business.openingHours.longInterval }}
@@ -97,8 +97,8 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
               </div>
             </div>
           </template>
-        </FooterBlocksInformationItem>
-        <FooterBlocksInformationItem title="social media">
+        </FooterItem>
+        <FooterItem title="social media">
           <template #content>
             <div class="flex justify-center gap-x-4 [&_svg]:hover:cursor-pointer lg:justify-start">
               <CoreTooltip
@@ -114,16 +114,25 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
               </CoreTooltip>
             </div>
           </template>
-        </FooterBlocksInformationItem>
-        <FooterBlocksInformationItem>
+        </FooterItem>
+        <FooterItem>
           <template #content>
             <div class="flex flex-col items-center lg:items-start lg:col-span-3">
               <span class="uppercase leading-dynamic margin-bottom-dynamic">menu</span>
-              <NuxtLink class="uppercase leading-dynamic hover:underline hover:underline-offset-8 hover:cursor-pointer" v-for="link in navigationMenu.links" :key="link.to">{{ link.label }}</NuxtLink>
+              <div class="flex flex-col gap-y-2">
+                <CoreLink 
+                  v-for="link in navigationMenu.links" 
+                  :key="link.to"
+                  :to="link.to"
+                  class="uppercase leading-dynamic hover:underline hover:underline-offset-8 hover:cursor-pointer" 
+                > 
+                  {{ link.label }}
+                </CoreLink>
+              </div>
             </div>
           </template>
-        </FooterBlocksInformationItem>
+        </FooterItem>
       </template>
-    </FooterBlocksInformationGrid>
+    </FooterGrid>
   </footer>
 </template>

@@ -16,7 +16,7 @@ const items: inventoryItem[] = [
 </script>
 
 <template>
-  <SectionBlocksWrapper id="inventory-section" :is-custom="false" :is-fixed-height="false">
+  <SectionWrapper id="inventory-section" :is-custom="false" :is-fixed-height="false">
     <template #title>Articole de baza</template>
     <template #content>
       <SectionInventoryGrid>
@@ -38,5 +38,5 @@ const items: inventoryItem[] = [
         </SectionInventoryItem>
       </SectionInventoryGrid>
     </template>
-  </SectionBlocksWrapper>
+  </SectionWrapper>
 </template>

@@ -2,37 +2,13 @@
 // @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 
-type showcaseItem = { src: string, title: string, year: number, month: string };
-
-const showcaseData: showcaseItem[] = [
-  {
-    src: '/img/show/show1.jpg',
-    title: 'Scheia',
-    year: 2024,
-    month: "march"
-  },
-  {
-    src: '/img/show/show2.jpg',
-    title: 'Scheia - detaliu',
-    year: 2024,
-    month: "march"
-  },
-  {
-    src: '/img/show/show3.jpg',
-    title: 'Scheia',
-    year: 2024,
-    month: "march"
-  },
-  {
-    src: '/img/show/show4.jpg',
-    title: 'Sf. Ilie',
-    year: 2024,
-    month: "march"
-  }
-];
+defineProps<{
+  items: showcaseItem[]
+}>();
 
 const splide = ref();
 const progressPercent = ref();
+
 const options = ref({
   width: '100%',
   perPage: 1,
@@ -61,9 +37,14 @@ onMounted(() => {
     <div class="bg-primary h-[2px] transition-all w-0" :style="{ width: `${progressPercent}%`}"></div>
   </div>
   <Splide :options ref="splide" @splide:mounted="updateSplideProgress" @splide:move="updateSplideProgress">
-    <SplideSlide v-for="item in showcaseData" :key="item.src">
+    <SplideSlide v-for="item in items" :key="item.src">
       <div class="flex flex-col gap-y-4 h-full">
-        <NuxtImg :src="item.src" class="w-full max-h-[500px] object-cover" format="webp" />
+        <NuxtImg 
+          provider="cloudinary"
+          :src="item.src" 
+          class="w-full max-h-[500px] object-cover" 
+          format="avif" 
+        />
         <div class="flex flex-col">
           <h2 class="font-normal font-dynamic">{{ item.title }}</h2>
           <h3 class="uppercase">{{ item.month }}, {{ item.year }}</h3>

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Component configuration
+defineSlots<{ default(): any }>();
+
 withDefaults(
   defineProps<{
     pauseOnHover: boolean
@@ -7,16 +10,14 @@ withDefaults(
     pauseOnHover: true
   }
 );
-
-defineSlots<{ default(): any }>();
 </script>
 
 <template>
-  <OMarquee 
+  <ODynamicMarquee 
     :pauseOnHover
     :clone="true"
-    class="bg-primary !w-full flex justify-center items-center cursor-pointer [&>*]:mr-8"
+    class="bg-primary !w-[150%] flex justify-center items-center cursor-pointer [&>*]:mr-8"
   >
     <slot></slot>
-  </OMarquee>
+  </ODynamicMarquee>
 </template>

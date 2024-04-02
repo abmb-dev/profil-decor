@@ -1,16 +1,11 @@
 <script setup lang='ts'>
-interface Props { isDefaultVariant?: boolean }
-
-const props = withDefaults(defineProps<Props>(), {
+// Component configuration
+type toggleButtonProps = { isDefaultVariant?: boolean }
+const props = withDefaults(defineProps<toggleButtonProps>(), {
   isDefaultVariant: true
 });
 
-const emit = defineEmits(['menuClick']);
-
-const onClick = () => {
-  emit('menuClick');
-}
-
+// Component style
 const beforeLine = computed(() => {
   return cn('transition-all before:w-full before:h-[1px]', props.isDefaultVariant ? 'before:bg-primary' : 'before:bg-gray-100');
 });
@@ -19,6 +14,12 @@ const afterLine = computed(() => {
   return cn('transition-all after:w-full after:h-[1px]', props.isDefaultVariant ? 'after:bg-primary' : 'after:bg-gray-100');
 });
 
+// Component business
+const emit = defineEmits(['menuClick']);
+
+const onClick = () => {
+  emit('menuClick');
+};
 </script>
 
 <template>

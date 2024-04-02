@@ -2,6 +2,7 @@
 import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from 'radix-vue';
 import { Icon } from '@iconify/vue'
 
+// Component configuration 
 type accordionProps = InstanceType<typeof AccordionRoot>["$props"];
 
 const props = withDefaults(
@@ -15,12 +16,11 @@ const props = withDefaults(
     collapsible: true
   }
 );
-
 </script>
 
 <template>
   <AccordionRoot
-    class="w-full bg-secondary border border-primary relative z-20"
+    class="w-full bg-secondary relative z-20"
     v-bind="props"
   >
     <template v-for="item in items" :key="item.value">

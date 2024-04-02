@@ -30,6 +30,6 @@ onMounted(() => {
     <SectionShowcaseRoot />
     <SectionCustomRoot />
     <SectionFaqRoot />
-    <FooterContainer />
+    <FooterRoot />
   </div>
 </template>

@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import type { NuxtLink } from '#build/components';
 
-withDefaults(
+// Component configuration
+const props = withDefaults(
   defineProps<{
     to: string,
+    target?: string,
     variant?: styleVariant & 'default' | 'secondary';
   }>(), 
   {
@@ -12,7 +15,7 @@ withDefaults(
 
 // Component style
 const linkVariants = cva(
-  'uppercase group relative w-full flex items-center gap-1.5 px-2.5 rounded-md font-light focus:outline-none \
+  'uppercase group relative font-light focus:outline-none \
   focus-visible:outline-none dark:focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 \
   focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 disabled:cursor-not-allowed \
   disabled:opacity-75 py-0 after:absolute after:bottom-0 after:inset-x-2.5 after:block after:h-[2px] after:mt-2',
@@ -28,7 +31,7 @@ const linkVariants = cva(
 </script>
 
 <template>
-  <NuxtLink :to="to" :class="linkVariants({ variant })">
+  <NuxtLink v-bind="props" :class="linkVariants({ variant })">
     <slot></slot>
   </NuxtLink>
 </template>

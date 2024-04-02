@@ -1,13 +1,18 @@
 <script setup lang="ts">
+// Component configuration
 defineProps<{
   isNavigationMask?: boolean
 }>();
 
-// Component configuration
 const navigationStore = useNavigationStore();
 const navigationMenu = useNavigation().buildNavigationMenu();
 const { windowY, offsetY } = useWindowScroll();
 const { isNavigationMenuOpen } = storeToRefs(navigationStore);
+
+// Component style
+const navigationVariants = cva(
+  'fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-primary',
+);
 
 // Component business
 const openNavigationMenu = () => {
@@ -17,18 +22,13 @@ const openNavigationMenu = () => {
 onUnmounted(() => {
   navigationStore.$reset();
 });
-
-// Component style
-const navigationVariants = cva(
-  'fixed flex items-center justify-between z-50 mx-auto rounded-xl w-[95vw] lg:w-[99%] mt-2 bg-primary',
-);
 </script>
 
 <template>
   <nav :class="[
     navigationVariants(),
     isNavigationMask && !isNavigationMenuOpen ? 'custom-navigation-clip' : 'bg-transparent',
-    (isNavigationMask && windowY < offsetY) ? 'clip-path--default' : 'clip-path--active'
+    (isNavigationMask && windowY < offsetY) ? 'clip-path--default' : 'clip-path--active',
   ]">
     <ul class="flex items-center min-w-0 px-5 py-6">
       <li class="mr-4 last:mr-0">
@@ -38,7 +38,7 @@ const navigationVariants = cva(
       </li>
     </ul>
     <ul class="min-w-0 px-5 py-6 lg:flex lg:items-center">
-      <NavigationBlocksToggleButton :is-default-variant="!isNavigationMask" @menu-click="openNavigationMenu" />
+      <NavigationToggleButton :is-default-variant="!isNavigationMask" @menu-click="openNavigationMenu" />
       <div class="hidden lg:flex">
         <li v-for="link in navigationMenu.links" :key="link.key" class="mr-4 last:mr-0">
           <CoreLink :to="link.to" :variant="isNavigationMask ? 'secondary' : 'default'">{{ link.label }}</CoreLink>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+// Component configuration
 withDefaults(
   defineProps<
   { 
@@ -20,6 +20,8 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground hover:bg-transparent hover:text-primary",
+        outline:
+          "bg-secondary"
       },
       size: {
         default: "h-9 px-4 py-6",
@@ -40,7 +42,7 @@ const emit = defineEmits(['click']);
 
 const onClick = () => {
   emit('click');
-}
+};
 </script>
 
 <template>

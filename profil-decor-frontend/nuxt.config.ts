@@ -18,4 +18,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/dqoijindf/image/upload/q_auto:low/profil_decor/'
+    }
+  },
+  runtimeConfig: {
+    CLOUDINARY_CLOUD_NAME: ""
+  }
 })

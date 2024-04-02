@@ -11,7 +11,7 @@ useHead({
   ],
   htmlAttrs: {
     lang: 'ro'
-  }
+  },
 });
 
 </script>

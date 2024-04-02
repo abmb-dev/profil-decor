@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { useElementVisibility } from '@vueuse/core';
 
+// Component configuration
 const description = useAppConfig().meta.business.description;
 const email = useAppConfig().meta.business.contact.email;
 
 const { initLineRevealAnimation } = useGsapAnimation();
 const { windowY } = useWindowScroll();
-
-const openMailLocalClient = () => {
-  if (process.client) {
-    window.location.href = `mailto:${email}`;
-  }
-};
 
 // Custom model description animation business logic
 const customModelDescription = ref(null);
@@ -40,20 +35,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <SectionBlocksWrapper id="first-description-section" :is-custom="true" :is-full-screen="false" class="px-8">
+  <SectionWrapper id="first-description-section" :is-custom="true" :is-full-screen="false" class="px-8">
     <div class="grid grid-cols-1 gap-x-0 gap-y-8 lg:grid-cols-12 lg:gap-x-4 pb-16">
-      <div class="order-1 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-6 flex flex-col gap-y-2 lg:self-center" ref="customModelDescription">
+      <div class="order-1 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-7 flex flex-col gap-y-4 lg:self-center" ref="customModelDescription">
         <span class="font-dynamic uppercase">viseaza si noi vom creea</span>
         <h1 class="font-dynamic leading-dynamic font-normal text-pretty" id="model-description">
           {{ description.description6 }}
         </h1>
+        <CoreButton>nu ezita sa ne contactezi</CoreButton>
       </div>
       <div class="order-2 relative col-start-1 col-end-2 lg:col-start-8 lg:col-end-12 flex items-center justify-center">
         <SectionCustomWork3D />
       </div>
     </div>
-    <CoreDynamicMarquee :content="email">
-        <p class="uppercase text-secondary font-extrabold text-[8vw]">{{ email }}</p>
+    <CoreDynamicMarquee>
+      <p class="uppercase text-secondary font-extrabold text-[8vw]">{{ email }}</p>
     </CoreDynamicMarquee>
-  </SectionBlocksWrapper>
+  </SectionWrapper>
 </template> 

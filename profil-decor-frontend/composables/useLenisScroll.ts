@@ -48,19 +48,6 @@ export default function (isNavigationMenuOpen?: Ref<boolean>) {
     return time < 0.5 ? 4 * Math.pow(time, 3) : 1 - Math.pow(-2 * time + 2, 3) / 2
   }
 
-  const stopScrollWatcher = watchEffect(() => {
-    if (isNavigationMenuOpen?.value) {
-      lenis && lenis.stop();
-    } else {
-      lenis && lenis.start();
-    }
-  });
-
-  onUnmounted(() => {
-    stopScrollWatcher();
-    lenis.destroy();
-  });
-
   getLenisInstance();
 
   return {

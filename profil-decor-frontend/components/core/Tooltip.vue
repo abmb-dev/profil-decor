@@ -2,6 +2,7 @@
 import { TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'radix-vue';
 type tooltipContentProps = InstanceType<typeof TooltipContent>['$props'];
 
+// Component configuration
 defineSlots<{ default(): any}>();
 
 withDefaults(

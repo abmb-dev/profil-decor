@@ -1,40 +1,29 @@
 <script setup lang="ts">
-
-// Component configuration
 const appConfig = useAppConfig();
 const navigationMenu = useNavigation().buildNavigationMenu();
-
-// TODO [Integration] : Replace this with data from server
-const addressData = {
-  street: 'example of a street, nr 1',
-  location: 'Botosani, Romania',
-  email: 'email@example.com'
-};
-
 </script>
 
 <template>
-  <aside class="h-screen flex flex-col bg-gray-100 w-full fixed z-20 py-16 overflow-hidden">
+  <aside class="h-screen flex flex-col bg-tertiary w-full fixed z-20 py-16 overflow-hidden">
     <div class="flex flex-col justify-between w-full custom-menu-height">
       <nav class="mt-6 font-thin">
         <ul>
           <li
             v-for="link in navigationMenu.links"
             :key="link.key"
-            class="flex justify-center text-[12.5vw] border-gray-200 border-t last:border-b"
+            class="flex justify-center text-[12.5vw] border-primary border-t last:border-b"
           >
-            <NuxtLink class="uppercase"
-              :to="link.to"
-            >
-              {{ link.label }}
-            </NuxtLink>
+            <CoreLink class="uppercase":to="link.to">{{ link.label }}</CoreLink>
           </li>
         </ul>
       </nav>
+      <MoleculesBusinessLogo class="mx-auto" />
       <address class="flex flex-col items-center justify-center leading-dynamic font-normal font-dynamic not-italic"> 
         <p>{{ appConfig.meta.business.placement.addressLine1 }}</p>
         <p class="margin-bottom-dynamic">{{ appConfig.meta.business.placement.addressLine2 }}</p>
-        <p>{{ appConfig.meta.business.contact.email }}</p>
+        <CoreLink :to="`mailto:${appConfig.meta.business.contact.email}`" class="lowercase">
+          {{ appConfig.meta.business.contact.email }}
+        </CoreLink>
       </address>
     </div>
   </aside>

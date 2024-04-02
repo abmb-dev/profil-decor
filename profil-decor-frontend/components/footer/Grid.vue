@@ -1,14 +1,12 @@
 <script setup lang="ts">
-
+// Component configuration
+defineSlots<{ grid(): any }>();
 withDefaults(
   defineProps<{ wrapperConfig?: string[] }>(), 
   {
     wrapperConfig: () => ['lg:grid-cols-12 lg:gap-x-[1vw]']
   }
 );
-
-defineSlots<{ grid(): any }>();
-
 </script>
 
 <template>
