@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import type { CoreAccordion } from '#build/components';
 
-const faqItems = [
-  {
-    value: 'item-1',
-    title: 'Is it accessible?',
-    content: 'Yes. It adheres to the WAI-ARIA design pattern.',
-  },
-  {
-    value: 'item-2',
-    title: 'Is it unstyled?',
-    content: 'Yes. It\'s unstyled by default, giving you freedom over the look and feel.',
-  },
-  {
-    value: 'item-3',
-    title: 'Can it be animated?',
-    content: 'Yes! You can use the transition prop to configure the animation.',
-  },
-];
+const items = ref<any[] | []>([]);
+const { data, pending, error } = useFetch("/api/faq/faq");
+
+if (data.value) {
+  items.value = data.value.map((x, index) => { return { title: x.question, content: x.answer, value: index }}).slice(0, 5);
+} else if (error.value) {
+  // TODO
+}
 
 </script>
 
@@ -27,7 +18,8 @@ const faqItems = [
       <h1 class="font-extra-dynamic uppercase">Intrebari frecvente</h1>
     </template>
     <template #content>
-      <CoreAccordion :items="faqItems" />
+      <span v-if="pending">Loading...</span>
+      <CoreAccordion v-else :items />
     </template>
   </SectionWrapper>
 </template>

@@ -36,7 +36,7 @@ const props = withDefaults(
           </AccordionTrigger>
         </AccordionHeader>
         <AccordionContent class="text-primary data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden font-dynamic data-[state=open]:border-b data-[state=open]:border-primary">
-          <div class="px-5 py-4">
+          <div class="px-5 py-4 font-normal">
             {{ item.content }}
           </div>
         </AccordionContent>
