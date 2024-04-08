@@ -9,7 +9,7 @@ interface ShowcaseImage extends CloudinaryImage {
   month: string;
 }
 
-const { data, error } = useFetch('/api/cloudinary/show');
+const { data, error } = useFetch('/api/cloudinary/show', { lazy: true });
 const sources: Ref<ShowcaseImage[]> = ref([]);
 
 if (data.value) {
@@ -25,7 +25,7 @@ if (data.value) {
       <h1 class="uppercase font-extra-dynamic">cateva dintre lucrarile noastre</h1>
     </template>
     <template #content>
-      <SectionShowcaseImageSplide :items="sources" />
+      <SectionShowcaseImageSplide v-if="sources.length" :items="sources" />
     </template>
   </SectionWrapper>
 </template>

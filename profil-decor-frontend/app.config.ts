@@ -32,6 +32,12 @@ export default defineAppConfig({
         description4: "Cu textura sa usoara, durabilitatea si rezistenta la intemperii, polistirenul, acoperit cu stratul de 3-5mm de rasina quartoasa, devine partenerul ideal pentru a sublinia si evidentia caracteristicile arhitecturale ale oricarui imobil.",
         description5: "La Profil Decor, combinam expertiza in procesul de productie cu pasiunea pentru design si calitate, pentru a va oferi o gama diversificata de profile decorative.",
         description6: "Iar... Daca iti doresti un profil unic la care te-ai gandit deja, tot ce trebuie sa faci este sa ne trimit modelul schitat din creion pe o foaie de hartie iar noi il vom proiecta pentru tine."
+      },
+      reason: {
+        reason1: "pentru că producem orice model de profil decorativ, personalizat după dimensiunile si cerintele tale, astfel ca tu să îi poti oferi casei tale un design unic cu care să iesi din tipare si care să te reprezinte!",
+        reason2: "pentru că rezistenta profilelor noastre, prin utilizarea celor mai bune materii prime, este testată în timp, astfel că tu nu trebuie să îti mai faci griji pentru redecorarea fatadei pentru mult timp!",
+        reason3: "pentru că dacă alegi să lucrezi cu noi îti oferim randarea 3D GRATUIT pentru ca tu să poti vizualiza rezultatul final, iar astfel poti evita costurile cu modificările ulterioare!",
+        reason4: "si pentru că stim că decorarea/renovarea fatadei poate implica multe costuri am introdus pentru tine PLATA ÎN RATE FIXE FĂRĂ DOBÂNDĂ pentru ca tu să te bucuri de tot ceea ce îti doresti!"
       }
     }
   },
