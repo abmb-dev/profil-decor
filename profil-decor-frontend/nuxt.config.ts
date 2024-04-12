@@ -5,8 +5,9 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', "@nuxt/image"],
   googleFonts: {
     families: {
-      Roboto: [100],
-      Montserrat: [100, 400, 600, 700],
+      'Montserrat': {
+        wght: [100, 200, 300, 400]
+      }
     }
   },
   alias: {

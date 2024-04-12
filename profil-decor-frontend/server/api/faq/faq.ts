@@ -4,6 +4,8 @@ export default defineEventHandler(async event => {
     answer: string;
     mode?: string;
   }
+
+  // TODO: Error handling
   const data: FAQItem[] = await $fetch("https://profildecor.azurewebsites.net/api/FAQs/RetrieveFAQs");
   return data;
 });

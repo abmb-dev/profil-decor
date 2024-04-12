@@ -18,8 +18,7 @@ if (data.value) {
       <h1 class="font-extra-dynamic uppercase">Intrebari frecvente</h1>
     </template>
     <template #content>
-      <span v-if="pending">Loading...</span>
-      <CoreAccordion v-else :items />
+      <CoreAccordion :items />
     </template>
   </SectionWrapper>
 </template>

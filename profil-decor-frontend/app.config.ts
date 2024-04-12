@@ -36,8 +36,10 @@ export default defineAppConfig({
       reason: {
         reason1: "pentru că producem orice model de profil decorativ, personalizat după dimensiunile si cerintele tale, astfel ca tu să îi poti oferi casei tale un design unic cu care să iesi din tipare si care să te reprezinte!",
         reason2: "pentru că rezistenta profilelor noastre, prin utilizarea celor mai bune materii prime, este testată în timp, astfel că tu nu trebuie să îti mai faci griji pentru redecorarea fatadei pentru mult timp!",
-        reason3: "pentru că dacă alegi să lucrezi cu noi îti oferim randarea 3D GRATUIT pentru ca tu să poti vizualiza rezultatul final, iar astfel poti evita costurile cu modificările ulterioare!",
-        reason4: "si pentru că stim că decorarea/renovarea fatadei poate implica multe costuri am introdus pentru tine PLATA ÎN RATE FIXE FĂRĂ DOBÂNDĂ pentru ca tu să te bucuri de tot ceea ce îti doresti!"
+        reason3_1: "pentru că dacă alegi să lucrezi cu noi îti oferim randarea ",
+        reason3_2: " pentru ca tu să poti vizualiza rezultatul final, iar astfel poti evita costurile cu modificările ulterioare!",
+        reason4_1: "si pentru că stim că decorarea/renovarea fatadei poate implica multe costuri am introdus pentru tine ",
+        reason4_2: " pentru ca tu să te bucuri de tot ceea ce îti doresti!"
       }
     }
   },
