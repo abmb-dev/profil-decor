@@ -1,41 +1,10 @@
-<template>
-  <div id="landing-page"> 
-    <section
-      id="landing-section"
-      class="custom-height w-screen h-screen bg-gray-100 pt-16 flex items-center justify-center overflow-hidden"
-    >
-      <div class="flex flex-col w-full h-full items-center justify-center">
-        <span
-          id="landing-title-profil"
-          class="text-primary leading-[20vw] opacity-0 text-[25vw]"
-        >PROFIL</span>
-        <div
-          id="landing-title-decor"
-          class="opacity-0"
-        >
-          <span class="text-primary leading-[20vw] text-[25vw]">D</span>
-          <span class="text-primary leading-[20vw] text-[25vw]">E</span>
-          <span class="text-primary leading-[20vw] text-[25vw]">C</span>
-          <span class="text-white leading-[20vw] text-[25vw]">O</span>
-          <span class="text-primary leading-[20vw] text-[25vw]">R</span>
-        </div>
-      </div>
-    </section>
-    <section class="w-screen h-screen bg-primary" />
-    <section class="w-screen h-screen bg-primary" />
-    <section class="w-screen h-screen bg-gray-100" />
-    <section class="w-screen h-screen bg-gray-100" />
-  </div>
-</template>
-
 <script setup lang="ts">
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import Lenis from '@studio-freight/lenis';
-
-const { initOpacityAnimation } = useGsapAnimation();
 const navigationStore = useNavigationStore();
 const { isNavigationMenuOpen } = storeToRefs(navigationStore);
+
+const {
+  initOpacityAnimation,
+} = useGsapAnimation();
 
 useHead({
   bodyAttrs: {
@@ -45,37 +14,23 @@ useHead({
   }
 });
 
-const initializeGsap = () => {
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' });
-}
-
-let lenis: Lenis;
-const initializeLenisScroll = () => {
-  lenis = new Lenis();
-  lenis.on('scroll', ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  gsap.ticker.lagSmoothing(0);
-}
-
 watch(() => isNavigationMenuOpen.value, () => {
-  initOpacityAnimation(isNavigationMenuOpen.value).play();
-  if (isNavigationMenuOpen.value) {
-    lenis.stop();
-  } else {
-    lenis.start();
-  }
+  initOpacityAnimation('#landing-page', isNavigationMenuOpen.value).play();
 });
 
 onMounted(() => {
-  const { playLandingTitleAnimations } = useGsapAnimation();
-
-  initializeGsap();
-  initializeLenisScroll();
-  playLandingTitleAnimations();
+  useLenisScroll(isNavigationMenuOpen);
 });
 </script>
+
+<template>
+  <div id="landing-page" class="relative z-0 lg:pb-[340px]">
+    <SectionDetailRoot class="h-screen" />
+    <SectionDescriptionRoot />
+    <!-- <SectionShowcaseRoot /> -->
+    <SectionReasonRoot />
+    <SectionCustomRoot />
+    <SectionFaqRoot />
+    <FooterRoot />
+  </div>
+</template>
