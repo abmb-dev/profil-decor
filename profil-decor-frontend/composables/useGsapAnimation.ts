@@ -2,8 +2,8 @@ import gsap from 'gsap';
 import SplitType from 'split-type';
 
 export default function () {
-  function initOpacityAnimation(isFadeAway = false) {
-    return gsap.timeline().to('#landing-page', { duration: 0.25, ease: "power4", opacity: isFadeAway ? 0 : 1 });
+  function initOpacityAnimation(target: string, isFadeAway = false) {
+    return gsap.timeline().to(target, { duration: 0.25, ease: "power4", opacity: isFadeAway ? 0 : 1, visibility: isFadeAway? 'hidden' : 'visible' });
   }
 
   function initLineRevealAnimation(target: string) {

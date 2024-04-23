@@ -26,5 +26,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     CLOUDINARY_CLOUD_NAME: ""
-  }
+  },
+  plugins: ["~/plugins/preline.client.ts"],
 })

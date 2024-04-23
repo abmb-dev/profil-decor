@@ -5,7 +5,7 @@ const location = useAppConfig().meta.business.placement.shortLocation;
 
 <template>
   <div class="flex items-baseline">
-    <span class="font-double-dynamic font-semibold mr-1">{{ name }}</span>
-    <span class="font-dynamic font-medium">{{ location }}</span>
+    <span class="text-2xl lg:text-6xl font-semibold mr-1">{{ name }}</span>
+    <span class="text-base lg:text-2xl font-medium">{{ location }}</span>
   </div>
 </template>

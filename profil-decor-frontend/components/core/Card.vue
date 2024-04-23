@@ -1,25 +1,28 @@
 <script lang="ts" setup>
 
-defineSlots<{ title(): any, content(): any }>();
+defineSlots<{ default(): any, title(): any, content(): any }>();
 
 withDefaults(
   defineProps<{ 
-    isTitleOnlyBg: boolean
+    isCustomCard: boolean
   }>(), 
   {
-    isTitleOnlyBg: false
+    isCustomCard: false
   }
 );
 
 </script>
 
 <template>
-  <div class="flex flex-col border border-primary rounded-md">
-    <div :class="cn('flex border-b border-primary rounded-md rounded-b-none px-4 py-2', isTitleOnlyBg ? 'bg-tertiary-cream' : '')">
-      <slot name="title"></slot>
-    </div>
-    <div class="flex p-4">
-      <slot name="content"></slot>
-    </div>
+  <div class="flex flex-col">
+    <slot v-if="isCustomCard"></slot>
+    <template v-else>
+      <div class="flex border-b border-primary rounded-lg rounded-b-none px-4 py-2">
+        <slot name="title"></slot>
+      </div>
+      <div class="flex p-4">
+        <slot name="content"></slot>
+      </div>
+    </template>
   </div>
 </template>

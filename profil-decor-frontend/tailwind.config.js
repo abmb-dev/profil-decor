@@ -5,6 +5,7 @@ export default {
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./app.vue",
+    'node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {
@@ -52,5 +53,8 @@ export default {
         slideUp: 'slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)',
       },
     }
-  }
+  },
+  plugins: [
+    require('preline/plugin'),
+  ]
 }

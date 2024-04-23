@@ -9,7 +9,7 @@ interface ShowcaseImage extends CloudinaryImage {
   month: string;
 }
 
-const { data, error } = useFetch('/api/cloudinary/show', { lazy: true });
+const { data, error } = useFetch('/api/cloudinary/show');
 const sources: Ref<ShowcaseImage[]> = ref([]);
 
 if (data.value) {

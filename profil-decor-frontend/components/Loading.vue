@@ -48,9 +48,8 @@ onMounted(() => {
 <template>
   <section class="w-screen h-screen overflow-hidden flex flex-col justify-center items-center">
     <div class="flex flex-col items-center justify-center"> 
-      <span class="text-2xl font-bold">{{ appConfig.meta.business.name  }}</span>
-      <span class="text-sm font-normal">{{ appConfig.meta.business.motto }}</span>
+      <MoleculesBusinessLogo />
     </div>
-    <span>{{ loadPercent }} %</span>
+    <CoreTypography tag="span" class="mt-4">{{ loadPercent }} %</CoreTypography>
   </section>
 </template>

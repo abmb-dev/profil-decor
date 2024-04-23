@@ -15,7 +15,7 @@ useHead({
 });
 
 watch(() => isNavigationMenuOpen.value, () => {
-  initOpacityAnimation(isNavigationMenuOpen.value).play();
+  initOpacityAnimation('#landing-page', isNavigationMenuOpen.value).play();
 });
 
 onMounted(() => {
@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="landing-page" class="relative z-0 lg:pb-[320px]">
+  <div id="landing-page" class="relative z-0 lg:pb-[340px]">
     <SectionDetailRoot class="h-screen" />
     <SectionDescriptionRoot />
     <!-- <SectionShowcaseRoot /> -->

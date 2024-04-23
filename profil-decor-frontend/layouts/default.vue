@@ -13,6 +13,10 @@
 <script setup lang="ts">
 const navigationStore = useNavigationStore();
 const { areAssetsLoaded, isNavigationMenuOpen } = storeToRefs(navigationStore);
+const {
+  initOpacityAnimation,
+} = useGsapAnimation();
+const route = useRoute();
 
 const proceedToNavigation = (model: any) => {
   areAssetsLoaded.value = true;
@@ -26,5 +30,16 @@ watch(isNavigationMenuOpen, () => {
   } else {
     lenis.start();
   }
-})
+});
+
+watch(() => isNavigationMenuOpen.value, () => {
+  initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
+  initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
+});
+
+watch(() => route.path, () => {
+  isNavigationMenuOpen.value = false;
+  console.log(route.path);
+});
+
 </script>

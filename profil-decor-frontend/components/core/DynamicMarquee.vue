@@ -1,23 +1,22 @@
 <script setup lang="ts">
-// Component configuration
 defineSlots<{ default(): any }>();
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    pauseOnHover: boolean
+    clone?: boolean
+    pauseOnHover?: boolean
+    direction?: 'normal' | 'reverse'
   }>(),
   {
-    pauseOnHover: true
+    clone: true,
+    pauseOnHover: true,
+    direction: 'normal'
   }
 );
 </script>
 
 <template>
-  <ODynamicMarquee 
-    :pauseOnHover
-    :clone="true"
-    class="bg-primary !w-[150%] flex justify-center items-center cursor-pointer [&>*]:mr-8"
-  >
+  <ODynamicMarquee class="!w-[150%] flex justify-center items-center cursor-pointer [&>*]:mr-8" v-bind="props">
     <slot></slot>
   </ODynamicMarquee>
 </template>

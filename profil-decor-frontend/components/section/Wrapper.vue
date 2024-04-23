@@ -37,7 +37,7 @@ const containerVariants = cva(
     variants: {
       isCustom: {
         true: 'flex-col items-center',
-        false: 'gap-y-10 px-[5vw] flex-col items-left'
+        false: 'gap-y-10 px-[6vw] flex-col items-left'
       }
     }
   }
@@ -50,7 +50,7 @@ const containerVariants = cva(
     <div :class="containerVariants({ isCustom })">
       <slot v-if="isCustom"></slot>
       <template v-else>
-        <div class="flex justify-center mx-auto">
+        <div class="flex justify-center lg:justify-start">
           <slot name="title"></slot>
         </div>
         <slot name="content"></slot>

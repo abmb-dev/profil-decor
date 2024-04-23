@@ -1,18 +1,13 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { useElementVisibility } from '@vueuse/core';
 
-interface CloudinaryImage {
-  src: string
-}
-
-const { data, error, pending } = await useFetch('/api/cloudinary/work');
-
-const sources: Ref<string[]> = ref([]);
-if (data.value) {
-  sources.value = data.value.map((image: CloudinaryImage) => image.src);
-} else if (error.value) {
-  // TODO
-}
+// TODO: Error handling
+const { data, pending } = await useFetch('/api/cloudinary/work', {
+  transform: (sources) => {
+    return sources.map(x => x.src);
+  }
+});
 
 const description = useAppConfig().meta.business.description;
 const { initLineRevealAnimation } = useGsapAnimation();
@@ -84,63 +79,55 @@ onMounted(() => {
 </script>
 
 <template>
-  <SectionWrapper id="first-description-section" :is-custom="true" :is-full-screen="false" class="px-8">
+  <SectionWrapper id="first-description-section" :is-custom="true" :is-full-screen="false" class="px-4 xl:px-8">
     <div class="grid grid-cols-1 gap-x-0 gap-y-8 lg:grid-cols-12 lg:gap-x-4 lg:gap-y-8">
       <div class="order-1 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-12">
-        <h1 class="font-double-dynamic leading-double-dynamic font-normal text-pretty">
-          {{ description.description2 }}
-        </h1>
+        <div class="flex justify-center items-baseline flex-wrap">
+          <CoreTypography tag="h1" class="font-semibold mr-4">Bun venit la</CoreTypography>
+          <MoleculesBusinessLogo />
+        </div>
       </div>
-      <div class="order-4 lg:order-3 relative col-start-1 col-end-2 lg:col-start-2 lg:col-span-5 overflow-hidden h-fit">
+      <div class="order-2 col-start-1 col-end-2 flex justify-center lg:col-start-2 lg:col-end-12 lg:mb-4">
+        <CoreTypography tag="h3" class="font-medium">{{ description.description1 }}</CoreTypography>
+      </div>
+      <div class="order-5 lg:order-3 relative col-start-1 col-end-2 lg:col-start-2 lg:col-span-5 overflow-hidden h-fit">
         <div class="relative overflow-hidden w-full h-auto">
-          <NuxtImg 
-            provider="cloudinary"
-            :src="sources.at(0)" 
-            format="avif"
-            :placeholder="pending"
-            :style="{ transform: `scale(${workScaleFactor})`}"
-          />
+          <CoreImage v-if="data" provider="cloudinary" :src="data.at(0)!" :scale-factor="workScaleFactor" :placeholder="pending" />
         </div>
       </div>
-      <div class="order-5 lg:order-3 relative col-start-1 col-end-2 lg:col-start-8 lg:self-start lg:col-span-4">
+      <div class="order-6 lg:order-3 relative col-start-1 col-end-2 lg:col-start-8 lg:self-start lg:col-span-4">
         <div class="relative overflow-hidden w-full h-full">
-          <NuxtImg 
-            provider="cloudinary"
-            :src="sources.at(1)"
-            format="avif"
-            :placeholder="pending"
-            :style="{ transform: `scale(${workScaleFactor})`}" 
-          />
+          <CoreImage v-if="data" provider="cloudinary" :src="data.at(1)!" :scale-factor="workScaleFactor" :placeholder="pending" />
         </div>
       </div>
-      <div class="order-2 lg:order-2 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-5 flex flex-col gap-y-4" ref="work1">
-        <span class="font-dynamic uppercase">totul despre profil decor</span>
-        <h1 class="font-dynamic leading-dynamic font-normal text-pretty" id="description-1">
-          {{ description.description1 }}
-        </h1>
+      <div class="order-3 lg:order-2 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-7 xl:col-end-6 flex flex-col gap-y-4" ref="work1">
+        <CoreLabel>
+          <div class="bg-tertiary-cream flex items-center justify-center p-2 mr-2 rounded-md">
+            <Icon icon="carbon:bastion-host" />
+          </div>
+          <CoreTypography>totul despre profil decor</CoreTypography>
+        </CoreLabel>
+        <CoreTypography id="description-1">{{ description.description1 }}</CoreTypography>
       </div>
-      <div class="order-3 lg:order-5 relative col-start-1 col-end-2 lg:col-start-8 lg:col-end-12" ref="work2">
-        <h1 class="font-dynamic leading-dynamic text-pretty" id="description-2">
-          {{ description.description5 }}
-        </h1>
+      <div class="order-4 lg:order-5 relative col-start-1 col-end-2 lg:col-start-8 lg:col-end-12" ref="work2">
+        <CoreTypography id="description-2">{{ description.description5 }}</CoreTypography>
       </div>
-      <div class="order-7 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-11 h-2/3">
+      <div class="order-8 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-11 h-2/3">
         <div class="relateive overflow-hidden w-full h-full">
-          <NuxtImg 
-            provider="cloudinary"
-            :src="sources.at(2)"
-            format="avif"
-            :placeholder="pending"
-            :style="{ transform: `scale(${portfolioScaleFactor})`}"
-          />
+          <CoreImage v-if="data" provider="cloudinary" :src="data.at(2)!" :scale-factor="portfolioScaleFactor" :placeholder="pending" />
         </div>
       </div>
-      <div class="order-6 relative col-start-1 cold-end-2 lg:col-start-2 lg:col-end-7 flex flex-col gap-y-4" ref="portfolioDescription">
-        <span class="font-dynamic uppercase font-normal">un portofoliu cum nu ai mai vazut</span>
-        <h1 class="font-dynamic text-pretty" id="portfolio-description">
-          {{ description.description3 }}
-        </h1>
-        <CoreButton>spre portofoliu</CoreButton>
+      <div class="order-7 relative col-start-1 cold-end-2 lg:col-start-2 lg:col-end-8 flex flex-col gap-y-4" ref="portfolioDescription">
+        <CoreLabel>
+          <div class="bg-tertiary-cream flex items-center justify-center p-2 mr-2 rounded-md">
+            <Icon icon="carbon:portfolio"></Icon>
+          </div>
+          <CoreTypography class="max-sm:text-sm">un portofoliu cum nu ai mai vazut</CoreTypography>
+        </CoreLabel>
+        <CoreTypography id="portfolio-description">{{ description.description3 }}</CoreTypography>
+        <CoreButton>
+          <NuxtLink to="/portfolio">spre portofoliu</NuxtLink>
+        </CoreButton>
       </div>
     </div>
   </SectionWrapper>
