@@ -1,0 +1,1 @@
+type showcaseItem = { src: string, title: string, year: number, month: string };
