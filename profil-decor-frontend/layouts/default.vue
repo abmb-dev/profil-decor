@@ -36,8 +36,8 @@ watch(isNavigationMenuOpen, () => {
 });
 
 watch(() => isNavigationMenuOpen.value, () => {
-  // initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
-  // initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
+  initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
+  initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
 });
 
 watch(() => route.path, () => {

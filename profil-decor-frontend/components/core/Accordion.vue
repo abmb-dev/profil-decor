@@ -20,7 +20,7 @@ const props = withDefaults(
 
 <template>
   <AccordionRoot
-    class="w-full bg-secondary flex flex-col gap-y-4 overflow-auto"
+    class="w-full bg-secondary flex flex-col gap-y-4"
     v-bind="props"
   >
     <template v-for="item in items" :key="item.value">
@@ -40,7 +40,7 @@ const props = withDefaults(
           </AccordionTrigger>
         </AccordionHeader>
 
-        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-y-auto">
+        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
           <CoreTypography tag="span" italic bold class="px-5 py-4 font-medium">{{ item.content }}</CoreTypography>
         </AccordionContent>
 
