@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 type placementType = 'shortLocation' | 'adressLine1' | 'adressLine2' | 'postalCode';
 type placementMetadata = { type: placementType, info: string };
@@ -53,6 +54,17 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
   return Object.create(appConfig.meta.business.socialMediaLinks)[platform];
 };
 
+const scrollHome = () => {
+  if (ScrollTrigger.isTouch === 0) {
+    scrollToSection('top')
+  } else {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+}
+
 </script>
 
 <template>
@@ -63,7 +75,7 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
       </template>
       <template #action>
         <div class="font-normal order-first py-[2vw] lg:py-0 lg:ml-auto lg:order-last">
-          <CoreButton class="group/btn" @click="scrollToSection('top')">
+          <CoreButton class="group/btn" @click="scrollHome">
             <Icon class="transition-transform rotate-90 group-hover/btn:-rotate-0" icon="iconamoon:arrow-up-2-duotone" style="font-size: 2em;" />Inapoi la start
           </CoreButton>
         </div>

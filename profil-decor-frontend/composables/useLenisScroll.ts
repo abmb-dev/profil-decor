@@ -25,7 +25,7 @@ export default function (isNavigationMenuOpen?: Ref<boolean>) {
   };
 
   function getLenisInstance(): any {
-    if (!lenis) {
+    if (!lenis && ScrollTrigger.isTouch === 0) {
       lenis = new Lenis();
       lenis.on('scroll', ScrollTrigger.update);
       

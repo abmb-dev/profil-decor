@@ -7,7 +7,7 @@ const { data, error, pending } = useFetch('/api/faq/faq', {
 </script>
 
 <template>
-  <SectionWrapper id="faq-section" class="mt-[72px] py-24">
+  <SectionWrapper id="faq-section" class="mt-[72px] py-24 overflow-y-auto">
     <template #title>
       <CoreTypography tag="h1" class="font-semibold mr-4 pt-12">Intrebari frecvente</CoreTypography>
     </template>
