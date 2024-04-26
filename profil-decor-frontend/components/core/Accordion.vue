@@ -20,14 +20,18 @@ const props = withDefaults(
 
 <template>
   <AccordionRoot
-    class="w-full bg-secondary relative "
+    class="w-full bg-secondary flex flex-col gap-y-4 overflow-auto"
     v-bind="props"
   >
     <template v-for="item in items" :key="item.value">
-      <AccordionItem :value="item.value" class="hover:cursor-pointer [&>*]:hover:cursor-pointer">
+      <AccordionItem 
+        :value="item.value" 
+        class="border border-primary rounded-md hover:cursor-pointer [&>*]:hover:cursor-pointer hover:border-primary hover:drop-shadow-md"
+      >
+      
         <AccordionHeader class="flex">
-          <AccordionTrigger class="text-primary flex h-[54px] flex-1 cursor-default items-center justify-between px-5 font-dynamic leading-none shadow-[0_1px_0] outline-none group">
-            <CoreTypography tag="span" class="hover:underline hover:cursor-pointer px-5 py-4">{{ item.title }}</CoreTypography>
+          <AccordionTrigger class="flex flex-1 items-center p-4 justify-between group hover:cursor-pointer">
+            <CoreTypography tag="span">{{ item.title }}</CoreTypography>
             <Icon
               icon="radix-icons:chevron-down"
               class="text-green10 ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
@@ -35,9 +39,11 @@ const props = withDefaults(
             />
           </AccordionTrigger>
         </AccordionHeader>
-        <AccordionContent class="text-primary bg-tertiary-cream data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden font-dynamic data-[state=open]:border-b data-[state=open]:border-primary">
-          <CoreTypography tag="span" class="px-5 py-4">{{ item.content }}</CoreTypography>
+
+        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
+          <CoreTypography tag="span" italic bold class="px-5 py-4 font-medium">{{ item.content }}</CoreTypography>
         </AccordionContent>
+
       </AccordionItem>
     </template>
   </AccordionRoot>

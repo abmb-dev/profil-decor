@@ -125,8 +125,8 @@ onMounted(() => {
           <CoreTypography class="max-sm:text-sm">un portofoliu cum nu ai mai vazut</CoreTypography>
         </CoreLabel>
         <CoreTypography id="portfolio-description">{{ description.description3 }}</CoreTypography>
-        <CoreButton>
-          <NuxtLink to="/portfolio">spre portofoliu</NuxtLink>
+        <CoreButton @click="navigateTo('/portfolio')">
+          spre portofoliu
         </CoreButton>
       </div>
     </div>

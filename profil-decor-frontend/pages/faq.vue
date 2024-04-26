@@ -7,13 +7,13 @@ const { data, error, pending } = useFetch('/api/faq/faq', {
 </script>
 
 <template>
-  <SectionWrapper id="faq-section" :is-full-screen="true" class="mt-[72px]">
+  <SectionWrapper id="faq-section" :is-full-screen="false" class="mt-[72px] py-24">
     <template #title>
-      <h1 class="text-2xl lg:text-6xl text-primary font-semibold mr-4" v-if="!pending && data">Intrebari frecvente</h1>
+      <CoreTypography tag="h1" class="font-semibold mr-4 pt-12">Intrebari frecvente</CoreTypography>
     </template>
     <template #content>
       <CoreTypography v-if="pending">Loading...</CoreTypography>
-      <CoreAccordion :items="data ?? []" v-else />
+      <CoreAccordion v-else :items="data ?? []" />
     </template>
   </SectionWrapper>
 </template>

@@ -8,7 +8,7 @@ const { data, pending, error } = useFetch("/api/faq/faq", {
 </script>
 
 <template>
-  <SectionWrapper id="faq-section" :is-full-screen="true">
+  <SectionWrapper id="faq-section" :is-full-screen="false" class="pt-12 pb-24">
     <template #content>
       <p v-if="pending">Loading...</p>
       <template v-else>

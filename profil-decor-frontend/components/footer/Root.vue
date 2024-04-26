@@ -82,8 +82,14 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
         </FooterItem>
         <FooterItem title="ore lucratoare">
           <template #content>
-            <div class="leading-dynamic text-sm margin-bottom-dynamic">
+            <div class="leading-dynamic text-sm mb-2">
               {{ appConfig.meta.business.openingHours.longInterval }}
+            </div>
+            <div class="leading-dynamic text-sm mb-2">
+              {{ appConfig.meta.business.openingHours.longIntervalSaturday }}
+            </div>
+            <div class="leading-dynamic text-sm margin-bottom-dynamic">
+              {{ appConfig.meta.business.openingHours.longIntervalSunday }}
             </div>
             <div class="leading-dynamic text-sm">
               <div v-for="{ type, info } in contact" :key="type">

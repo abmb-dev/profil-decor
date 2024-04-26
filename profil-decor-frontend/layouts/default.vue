@@ -39,7 +39,6 @@ watch(() => isNavigationMenuOpen.value, () => {
 
 watch(() => route.path, () => {
   isNavigationMenuOpen.value = false;
-  console.log(route.path);
 });
 
 </script>

@@ -10,7 +10,8 @@ onMounted(async () => {
   if (carouselRef.value) {
     carousel = new HSCarousel(carouselRef.value, {
       currentIndex: 0,
-      isAutoPlay: true
+      isAutoPlay: true,
+      speed: 6000
     });
   }
 });
