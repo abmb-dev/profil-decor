@@ -55,7 +55,7 @@ const isSocialLinkEnabled = (platform: socialMediaPlatform): boolean => {
 };
 
 const scrollHome = () => {
-  if (ScrollTrigger.isTouch === 0) {
+  if (ScrollTrigger.isTouch !== 1) {
     scrollToSection('top')
   } else {
     window.scrollTo({
