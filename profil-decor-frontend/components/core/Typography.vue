@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const typograpyVariant = cva('font-thin leading-relaxed', {
+const typograpyVariant = cva('font-light leading-relaxed', {
   variants: {
     tag: {
       h1: "text-3xl lg:text-6xl",
