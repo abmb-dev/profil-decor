@@ -40,7 +40,7 @@ const props = withDefaults(
           </AccordionTrigger>
         </AccordionHeader>
 
-        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
+        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-y-auto">
           <CoreTypography tag="span" italic bold class="px-5 py-4 font-medium">{{ item.content }}</CoreTypography>
         </AccordionContent>
 
