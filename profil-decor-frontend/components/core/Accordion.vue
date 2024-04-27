@@ -26,11 +26,11 @@ const props = withDefaults(
     <template v-for="item in items" :key="item.value">
       <AccordionItem 
         :value="item.value" 
-        class="border border-primary rounded-md hover:cursor-pointer [&>*]:hover:cursor-pointer hover:border-primary hover:drop-shadow-md"
+        class="border border-primary rounded-md hover:cursor-pointer [&>*]:hover:cursor-pointer"
       >
       
         <AccordionHeader class="flex">
-          <AccordionTrigger class="flex flex-1 items-center p-4 justify-between group hover:cursor-pointer">
+          <AccordionTrigger class="flex flex-1 items-center p-4 justify-between group hover:cursor-pointer hover:bg-primary hover:text-secondary transition-colors duration-150">
             <CoreTypography tag="span">{{ item.title }}</CoreTypography>
             <Icon
               icon="radix-icons:chevron-down"
@@ -40,8 +40,8 @@ const props = withDefaults(
           </AccordionTrigger>
         </AccordionHeader>
 
-        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
-          <CoreTypography tag="span" italic bold class="px-5 py-4 font-medium">{{ item.content }}</CoreTypography>
+        <AccordionContent class="rounded-b-md flex flex-1 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-auto">
+          <CoreTypography tag="span" bold class="px-5 py-4 font-medium">{{ item.content }}</CoreTypography>
         </AccordionContent>
 
       </AccordionItem>

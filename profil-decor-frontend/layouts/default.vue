@@ -36,8 +36,11 @@ watch(isNavigationMenuOpen, () => {
 });
 
 watch(() => isNavigationMenuOpen.value, () => {
-  initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
-  initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
+  if (route.name === "") {
+    initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
+  } else if (route.name === 'faq') {
+    initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
+  }
 });
 
 watch(() => route.path, () => {

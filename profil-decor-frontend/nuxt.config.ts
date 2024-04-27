@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [ '~/assets/css/main.css', '~/assets/css/lenis.css', '~/assets/css/tailwind.css', '~/assets/css/splide.css'],
-  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', "@nuxt/image"],
+  modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/device'],
   googleFonts: {
     families: {
       'Montserrat': {

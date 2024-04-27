@@ -2,17 +2,15 @@
 import { useElementVisibility } from '@vueuse/core';
 
 const appConfig = useAppConfig();
-
-// Component configuration
 const description = useAppConfig().meta.business.description;
 const email = useAppConfig().meta.business.contact.email;
-
+const { isDesktop } = useDevice();
 const { initLineRevealAnimation } = useGsapAnimation();
 const { windowY } = useWindowScroll();
 
 // Custom model description animation business logic
 const customModelDescription = ref(null);
-const isModelDescriptionVisible = useElementVisibility(customModelDescription);
+const isModelDescriptionVisible = isDesktop ? useElementVisibility(customModelDescription) : ref(false);
 const wasDescriptionAnimated = ref(false);
 
 watch(isModelDescriptionVisible, () => {
@@ -33,7 +31,16 @@ onMounted(() => {
   if (windowY.value > 0) {
     wasDescriptionAnimated.value = true;
   }
-}); 
+});
+
+const tryOpeningMailClient = () => {
+  if (isDesktop) {
+    navigateTo(`mailto:${appConfig.meta.business.contact.email}`, { 
+      external: true 
+    });
+  }
+};
+
 </script>
 
 <template>
@@ -42,7 +49,7 @@ onMounted(() => {
       <div class="order-1 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-7 flex flex-col gap-y-4 lg:self-center py-12" ref="customModelDescription">
         <CoreLabel>
           <div class="bg-tertiary-cream flex items-center justify-center p-2 mr-2 rounded-md">
-            <Icon icon="carbon:bastion-host" />
+            <Icon icon="ion:build-outline" />
           </div>
           <CoreTypography>viseaza si noi vom creea</CoreTypography>
         </CoreLabel>
@@ -61,7 +68,7 @@ onMounted(() => {
     <CoreDynamicMarquee direction="reverse" class="bg-primary">
       <p 
         class="uppercase text-secondary font-extrabold text-[8vh] xl:text-[8vw]"
-        @click="navigateTo(`mailto:${appConfig.meta.business.contact.email}`, { external: true })"
+        @click="tryOpeningMailClient"
       >
         {{ email }}
       </p>
