@@ -17,7 +17,7 @@ if (data.value) {
 </script>
 
 <template>
-  <SectionWrapper id="showcase-section" :is-custom="true" :is-fixed-height="false" variant="default">
+  <SectionWrapper id="detail-section" :is-custom="true" :is-fixed-height="false" variant="default">
     <SectionDetailImageSlider :sources />
   </SectionWrapper>
 </template>

@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+import ScrollTrigger from 'gsap/ScrollTrigger';
 const navigationStore = useNavigationStore();
 const { areAssetsLoaded, isNavigationMenuOpen } = storeToRefs(navigationStore);
 const {
@@ -24,22 +25,25 @@ const proceedToNavigation = (model: any) => {
 }
 
 watch(isNavigationMenuOpen, () => {
-  const lenis = useLenisScroll().getLenisInstance();
-  if (isNavigationMenuOpen.value) {
-    lenis.stop();
-  } else {
-    lenis.start();
+  if (process.client && ScrollTrigger.isTouch === 0) {
+    const lenis = useLenisScroll().getLenisInstance();
+    if (isNavigationMenuOpen.value) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
   }
 });
 
 watch(() => isNavigationMenuOpen.value, () => {
-  initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
-  initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
+  if (route.name === "") {
+    initOpacityAnimation('#landing-page', isNavigationMenuOpen.value).play();
+  } else if (route.name === 'faq') {
+    initOpacityAnimation('#faq-page', isNavigationMenuOpen.value).play();
+  }
 });
 
 watch(() => route.path, () => {
   isNavigationMenuOpen.value = false;
-  console.log(route.path);
 });
-
 </script>

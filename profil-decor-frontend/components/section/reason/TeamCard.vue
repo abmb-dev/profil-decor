@@ -1,5 +1,5 @@
 <template>
-<CoreCard :is-custom-card="true" class="rounded-3xl bg-tertiary-cream p-12 justify-between min-h-fit gap-y-8">
+<CoreCard :is-custom-card="true" class="rounded-3xl border p-12 justify-between min-h-fit gap-y-8">
   <CoreCarousel ref="carouselRef">
     <div class="hs-carousel-slide w-full">
       <div class="flex flex-col justify-center lg:justify-start gap-y-8">

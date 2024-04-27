@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const typograpyVariant = cva('font-normal leading-relaxed', {
+const typograpyVariant = cva('font-light leading-relaxed', {
   variants: {
     tag: {
       h1: "text-3xl lg:text-6xl",
@@ -10,7 +10,10 @@ const typograpyVariant = cva('font-normal leading-relaxed', {
       li: "text-base lg:text-lg",
     },
     bold: {
-      true: "font-bold"
+      true: "!font-medium",
+    },
+    italic: {
+      true: "italic"
     },
     primary: {
       true: "text-primary",
@@ -22,12 +25,14 @@ const typograpyVariant = cva('font-normal leading-relaxed', {
 const props = withDefaults(
   defineProps<{
     tag?: "h1" | "h2" | "h3" | "span" | "p" | "li",
-    bold?: boolean
+    bold?: boolean,
+    italic?: boolean,
     primary?: boolean
   }>(),
   {
     tag: "p",
     bold: false,
+    italic: false,
     primary: true
   }
 );
@@ -35,7 +40,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <component :is="tag" v-bind="props" :class="typograpyVariant({ tag, bold })">
+  <component :is="tag" v-bind="props" :class="typograpyVariant({ tag, bold, italic })">
     <slot></slot>
   </component>
 </template>

@@ -9,13 +9,14 @@ const { data, pending } = await useFetch('/api/cloudinary/work', {
   }
 });
 
-const description = useAppConfig().meta.business.description;
+const { isDesktop } = useDevice();
 const { initLineRevealAnimation } = useGsapAnimation();
 const { windowY } = useWindowScroll();
+const description = useAppConfig().meta.business.description;
 
 // First work and description animation business logic
 const work1 = ref(null);
-const isWork1ImageVisible = useElementVisibility(work1);
+const isWork1ImageVisible = isDesktop ? useElementVisibility(work1) : ref(false);
 const wasWork1DescriptionAnimated = ref(false);
 
 watch(isWork1ImageVisible, () => {
@@ -28,7 +29,7 @@ watch(isWork1ImageVisible, () => {
 
 // Second work and description animation business logic
 const work2 = ref(null);
-const isWork2ImageVisible = useElementVisibility(work2);
+const isWork2ImageVisible = isDesktop ? useElementVisibility(work2) : ref(false);
 const wasWork2DescriptionAnimated = ref(false);
 
 watch(isWork2ImageVisible, () => {
@@ -41,7 +42,7 @@ watch(isWork2ImageVisible, () => {
 
 // Portfolio description animation business logic
 const portfolioDescription = ref(null);
-const isPortfolioDescriptionVisible = useElementVisibility(portfolioDescription);
+const isPortfolioDescriptionVisible = isDesktop ? useElementVisibility(portfolioDescription) : ref(false);
 const wasPortfolioDescriptionAnimated = ref(false);
 
 watch(isPortfolioDescriptionVisible, () => {
@@ -125,8 +126,8 @@ onMounted(() => {
           <CoreTypography class="max-sm:text-sm">un portofoliu cum nu ai mai vazut</CoreTypography>
         </CoreLabel>
         <CoreTypography id="portfolio-description">{{ description.description3 }}</CoreTypography>
-        <CoreButton>
-          <NuxtLink to="/portfolio">spre portofoliu</NuxtLink>
+        <CoreButton @click="navigateTo('/portfolio')">
+          spre portofoliu
         </CoreButton>
       </div>
     </div>

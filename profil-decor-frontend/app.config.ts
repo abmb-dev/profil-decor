@@ -13,10 +13,11 @@ export default defineAppConfig({
       },
       openingHours: {
         longInterval: 'Luni - Vineri: 08:00 - 17:00',
+        longIntervalSaturday: "Sâmbătă: 08:00 - 13:00",
+        longIntervalSunday: "Duminica: ÎNCHIS"
       },
       contact: {
-        telephone1: '(+40) 700 000 001',
-        telephone2: '(+40) 700 000 002',
+        telephone1: '(+40) 749 298 880',
         email: 'profildecor.business@gmail.com',
       },
       socialMediaLinks: {

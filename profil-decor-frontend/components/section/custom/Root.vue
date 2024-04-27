@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useElementVisibility } from '@vueuse/core';
 
-// Component configuration
+const appConfig = useAppConfig();
 const description = useAppConfig().meta.business.description;
 const email = useAppConfig().meta.business.contact.email;
-
+const { isDesktop } = useDevice();
 const { initLineRevealAnimation } = useGsapAnimation();
 const { windowY } = useWindowScroll();
 
 // Custom model description animation business logic
 const customModelDescription = ref(null);
-const isModelDescriptionVisible = useElementVisibility(customModelDescription);
+const isModelDescriptionVisible = isDesktop ? useElementVisibility(customModelDescription) : ref(false);
 const wasDescriptionAnimated = ref(false);
 
 watch(isModelDescriptionVisible, () => {
@@ -31,22 +31,31 @@ onMounted(() => {
   if (windowY.value > 0) {
     wasDescriptionAnimated.value = true;
   }
-}); 
+});
+
+const tryOpeningMailClient = () => {
+  if (isDesktop) {
+    navigateTo(`mailto:${appConfig.meta.business.contact.email}`, { 
+      external: true 
+    });
+  }
+};
+
 </script>
 
 <template>
-  <SectionWrapper id="first-description-section" :is-custom="true" :is-full-screen="false" class="px-8">
+  <SectionWrapper id="first-description-section" :is-custom="true" class="py-24 px-8 lg:px-12">
     <div class="grid grid-cols-1 gap-x-0 gap-y-8 lg:grid-cols-12 lg:gap-x-4 pb-16">
-      <div class="order-1 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-7 flex flex-col gap-y-4 lg:self-center" ref="customModelDescription">
+      <div class="order-1 relative col-start-1 col-end-2 lg:col-start-2 lg:col-end-7 flex flex-col gap-y-4 lg:self-center py-12" ref="customModelDescription">
         <CoreLabel>
           <div class="bg-tertiary-cream flex items-center justify-center p-2 mr-2 rounded-md">
-            <Icon icon="carbon:bastion-host" />
+            <Icon icon="ion:build-outline" />
           </div>
           <CoreTypography>viseaza si noi vom creea</CoreTypography>
         </CoreLabel>
         <CoreTypography id="model-description">{{ description.description6 }}</CoreTypography>
-        <CoreButton>
-          <NuxtLink to="/contact">nu ezita sa ne contactezi</NuxtLink>
+        <CoreButton @click="navigateTo('/contact')">
+          nu ezita sa ne contactezi
         </CoreButton>
       </div>
       <div class="order-2 relative col-start-1 col-end-2 lg:col-start-8 lg:col-end-12 flex items-center justify-center">
@@ -57,7 +66,12 @@ onMounted(() => {
       <p class="uppercase text-primary font-extrabold text-[8vh] xl:text-[8vw]">Nu ezita sa ne contactezi!</p>
     </CoreDynamicMarquee>
     <CoreDynamicMarquee direction="reverse" class="bg-primary">
-      <p class="uppercase text-secondary font-extrabold text-[8vh] xl:text-[8vw]">{{ email }}</p>
+      <p 
+        class="uppercase text-secondary font-extrabold text-[8vh] xl:text-[8vw]"
+        @click="tryOpeningMailClient"
+      >
+        {{ email }}
+      </p>
     </CoreDynamicMarquee>
   </SectionWrapper>
 </template> 

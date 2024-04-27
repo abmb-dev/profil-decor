@@ -24,10 +24,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="landing-page" class="relative z-0 lg:pb-[340px]">
+  <div id="landing-page" class="relative z-0 lg:pb-[400px]">
     <SectionDetailRoot class="h-screen" />
     <SectionDescriptionRoot />
-    <!-- <SectionShowcaseRoot /> -->
     <SectionReasonRoot />
     <SectionCustomRoot />
     <SectionFaqRoot />
