@@ -37,14 +37,13 @@ watch(isNavigationMenuOpen, () => {
 
 watch(() => isNavigationMenuOpen.value, () => {
   if (route.name === "") {
-    initOpacityAnimation('#landing-section', isNavigationMenuOpen.value).play();
+    initOpacityAnimation('#landing-page', isNavigationMenuOpen.value).play();
   } else if (route.name === 'faq') {
-    initOpacityAnimation('#faq-section', isNavigationMenuOpen.value).play();
+    initOpacityAnimation('#faq-page', isNavigationMenuOpen.value).play();
   }
 });
 
 watch(() => route.path, () => {
   isNavigationMenuOpen.value = false;
 });
-
 </script>
